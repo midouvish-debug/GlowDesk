@@ -1,0 +1,7 @@
+{
+  "name": "GlowDesk- Beauty Assistant",
+  "description": "A professional B2B SaaS landing page for an AI-powered appointment assistant designed for beauty salons and aesthetic centers.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
