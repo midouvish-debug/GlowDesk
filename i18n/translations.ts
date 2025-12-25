@@ -9,7 +9,51 @@ export const translations = {
       pricing: "Pricing",
       howItWorks: "How it Works",
       about: "About",
-      cta: "Request a Demo"
+      cta: "Request a Demo",
+      login: "Login",
+      dashboard: "Dashboard",
+      logout: "Logout"
+    },
+    auth: {
+      title: "Client Portal",
+      subtitle: "Secure access to your Orienta desk",
+      userLabel: "Username or Email",
+      passLabel: "Password",
+      btn: "Sign In",
+      error: "Invalid credentials. Try admin / admin",
+      forgot: "Forgot password?"
+    },
+    dashboard: {
+      sidebar: {
+        overview: "Overview",
+        bookings: "Bookings",
+        calendar: "Calendar",
+        billing: "Billing",
+        profile: "Profile"
+      },
+      overview: {
+        title: "Business Snapshot",
+        subtitle: "How your AI assistant is performing",
+        stats: {
+          total: "Total Bookings",
+          revenue: "Est. Revenue",
+          leads: "New Leads",
+          noshow: "No-show Rate"
+        },
+        chartTitle: "Booking Trends"
+      },
+      calendar: {
+        title: "Google Calendar Sync",
+        status: "Sync Status: Active",
+        btn: "Resync Now",
+        connected: "Connected as {email}"
+      },
+      billing: {
+        title: "Plan & Billing",
+        currentPlan: "Current Plan",
+        manage: "Manage Subscription",
+        history: "Invoice History"
+      }
     },
     hero: {
       badge: "Next-Gen AI for Service Businesses",
@@ -70,7 +114,7 @@ export const translations = {
       missionText: "Our mission is simple: help businesses never miss an opportunity because of limited time or availability. We believe that technology should remove friction, not create it. That’s why we build AI assistants that are easy to use, safe, and designed to integrate naturally into existing business workflows.",
       whatWeDoHeadline: "What We Do",
        whatWeDoSub: "Orienta develops AI assistants that can:",
-      whatWeDoItems: [
+       whatWeDoItems: [
         "Answer customer calls and messages 24/7",
         "Handle repetitive conversations automatically",
         "Guide customers to the right service",
@@ -163,88 +207,142 @@ export const translations = {
       pricing: "Tarifs",
       howItWorks: "Fonctionnement",
       about: "À Propos",
-      cta: "Demander une démo"
+      cta: "Demander une démo",
+      login: "Connexion",
+      dashboard: "Tableau de Bord",
+      logout: "Déconnexion"
+    },
+    auth: {
+      title: "Portail Client",
+      subtitle: "Accès sécurisé à votre bureau Orienta",
+      userLabel: "Utilisateur ou Email",
+      passLabel: "Mot de passe",
+      btn: "Se Connecter",
+      error: "Identifiants invalides (admin / admin)",
+      forgot: "Mot de passe oublié ?"
+    },
+    dashboard: {
+      sidebar: {
+        overview: "Vue d'ensemble",
+        bookings: "Réservations",
+        calendar: "Calendrier",
+        billing: "Facturation",
+        profile: "Profil"
+      },
+      overview: {
+        title: "Aperçu de l'activité",
+        subtitle: "Performance de votre assistant IA",
+        stats: {
+          total: "Réservations totales",
+          revenue: "Revenu est.",
+          leads: "Nouveaux prospects",
+          noshow: "Taux d'absence"
+        },
+        chartTitle: "Tendances des réservations"
+      },
+      calendar: {
+        title: "Synchro Google Calendar",
+        status: "Statut : Actif",
+        btn: "Synchroniser",
+        connected: "Connecté en tant que {email}"
+      },
+      billing: {
+        title: "Plan & Facturation",
+        currentPlan: "Plan actuel",
+        manage: "Gérer l'abonnement",
+        history: "Historique"
+      }
     },
     hero: {
-      badge: "IA de nouvelle génération pour les services",
+      badge: "IA de nouvelle génération pour les entreprises de services",
       headline: "Ne manquez plus jamais un ",
       headlineItalic: "Client",
       headlineEnd: " ",
-      subheadline: "Un assistant IA intelligent par Orienta qui répond aux appels, aux messages WhatsApp et gère les réservations automatiquement.",
+      subheadline: "Un assistant intelligent par Orienta qui répond aux appels, aux messages WhatsApp et gère les réservations automatiquement.",
       primaryCTA: "Demander une démo",
       secondaryCTA: "Voir comment ça marche",
-      check1: "Sans engagement",
+      check1: "Sans engagement à long terme",
       check2: "Conforme RGPD",
-      check3: "Annulation possible",
-      bookingLabel: "Nouveau RDV",
+      check3: "Annulez à tout moment",
+      bookingLabel: "Nouvelle réservation",
       bookingService: "Service à 14h00"
     },
     problems: {
       badge: "Le Défi",
-      headline: "Gérer votre accueil ne devrait pas ",
-      headlineItalic: "freiner",
-      headlineEnd: " votre croissance.",
-      subheadline: "La gestion manuelle est le goulot d'étranglement des entreprises de services. Avec GlowDesk, ne choisissez plus entre vos mains et le téléphone.",
+      headline: "Gérer votre bureau ne devrait pas signifier ",
+      headlineItalic: "manquer",
+      headlineEnd: " la croissance.",
+      subheadline: "La planification manuelle est le goulot d'étranglement pour les entreprises de services.",
       items: [
-        { title: "Appels manqués", desc: "Vous êtes en séance et le téléphone sonne. Un client de perdu." },
-        { title: "Pertes hors horaires", desc: "GlowDesk travaille pendant que vous vous reposez." },
-        { title: "Distraction du personnel", desc: "Vos experts doivent se concentrer sur leurs soins, pas sur l'accueil." }
+        { title: "Appels manqués", desc: "Vous êtes concentré sur une séance et le téléphone sonne. Un prospect de perdu." },
+        { title: "Perte hors horaires", desc: "La plupart des clients réservent quand vous êtes fermé. GlowDesk travaille pendant que vous vous reposez." },
+        { title: "Distraction du personnel", desc: "Vos professionnels devraient fournir des services, pas agir comme réceptionnistes." }
       ],
-      testimonial: "\"GlowDesk a changé notre flux de travail. Plus d'inquiétude pour le téléphone.\"",
-      author: "Maria, Propriétaire de studio & bien-être"
+      testimonial: "\"GlowDesk a changé notre flux de travail. Nous ne nous soucions plus du téléphone.\"",
+      author: "Maria, Propriétaire de studio"
     },
     solutions: {
       badge: "La Solution",
       headline: "Conçu pour le ",
-      headlineAccent: "Bien-être & l'Esthétique",
-      subheadline: "GlowDesk comprend les nuances des services professionnels—de la durée des soins aux politiques d'annulation.",
+      headlineAccent: "Bien-être et l'Esthétique",
+      subheadline: "GlowDesk comprend les nuances des services professionnels.",
       items: [
-        { title: "Réceptionniste IA Vocale", desc: "Répond 24/7 avec une voix naturelle qui représente parfaitement votre marque." },
+        { title: "Réceptionniste IA Vocale", desc: "Répond aux appels 24/7 avec une voix naturelle." },
         { title: "Gestionnaire WhatsApp", desc: "Transforme les conversations en réservations directement." },
-        { title: "Synchro Universelle", desc: "S'intègre parfaitement avec Google, Outlook et les plateformes pro." },
-        { title: "Consultation Intelligente", desc: "Répond aux questions sur les services et trie les prospects." },
-        { title: "Rappels Proactifs", desc: "Réduit drastiquement les rendez-vous non honorés." },
-        { title: "Sécurité Entreprise", desc: "Basé sur l'infrastructure sécurisée d'Orienta." }
+        { title: "Synchro Universelle", desc: "S'intègre parfaitement avec Google et Outlook." },
+        { title: "Consultation Intelligente", desc: "Répond aux questions sur les services." },
+        { title: "Rappels Proactifs", desc: "Réduit considérablement les absences." },
+        { title: "Sécurité Entreprise", desc: "Construit sur l'infrastructure sécurisée d'Orienta." }
       ]
     },
     howItWorks: {
-      headline: "Fonctionnement",
+      headline: "Comment ça marche",
       subheadline: "Démarrer avec GlowDesk est simple et ne nécessite aucune compétence technique.",
       steps: [
         { title: "Connectez votre calendrier", desc: "Intégrez Google, Outlook ou votre logiciel actuel en quelques minutes." },
-        { title: "L'IA gère les demandes", desc: "Lorsqu'un client appelle ou envoie un message, notre IA prend le relais immédiatement." },
-        { title: "Relaxez et servez", desc: "Regardez votre agenda se remplir automatiquement pendant que vous vous concentrez sur vos soins." }
+        { title: "L'IA gère les demandes", desc: "Quand les clients appellent ou envoient un message, notre IA prend le relais." },
+        { title: "Détendez-vous et servez", desc: "Regardez votre emploi du temps se remplir automatiquement." }
       ]
     },
     about: {
       title: "À Propos d'Orienta",
       whoHeadline: "Qui Nous Sommes",
-      whoText: "Orienta est une entreprise technologique axée sur la création d'assistants alimentés par l'IA.",
+      whoText: "Orienta est une société technologique axée sur la création d'assistants alimentés par l'IA.",
       missionHeadline: "Notre Mission",
-      missionText: "Aider les entreprises à ne jamais manquer une opportunité.",
-      whatWeDoHeadline: "Ce que Nous Faisons",
+      missionText: "Notre mission est simple : aider les entreprises à ne jamais manquer une opportunité.",
+      whatWeDoHeadline: "Ce Que Nous Faisons",
       whatWeDoSub: "Orienta développe des assistants IA qui peuvent :",
-      whatWeDoItems: ["Répondre aux appels 24/7", "Gérer les conversations", "Guider les clients", "Réserver des RDV", "Réduire la surcharge"],
-      whatWeDoEnd: "Nos solutions offrent une valeur immédiate.",
+      whatWeDoItems: [
+        "Répondre aux appels et messages 24/7",
+        "Gérer les conversations répétitives",
+        "Guider les clients vers le bon service",
+        "Réserver des rendez-vous",
+        "Réduire la surcharge opérationnelle"
+      ],
+      whatWeDoEnd: "Nos solutions sont conçues pour offrir une valeur immédiate.",
       approachHeadline: "Notre Approche",
-      approachIntro: "Nous suivons trois principes :",
+      approachIntro: "Chez Orienta, nous suivons trois principes fondamentaux :",
       approachItems: [
-        { title: "1. Orientation, Pas Remplacement", desc: "L'IA aide les humains." },
-        { title: "2. Sécurité et Simplicité", desc: "Systèmes sûrs et simples." },
-        { title: "3. Impact Réel", desc: "Focus sur le gain de temps et de revenus." }
+        { title: "1. Orientation, pas remplacement", desc: "Nos assistants IA sont conçus pour assister et guider." },
+        { title: "2. Sécurité et Simplicité", desc: "Nous évitons la complexité inutile." },
+        { title: "3. Impact réel sur le business", desc: "Chaque fonctionnalité est axée sur la valeur." }
       ],
       productsHeadline: "Nos Produits",
-      productsIntro: "Solutions spécifiques à chaque industrie.",
+      productsIntro: "Orienta développe des solutions spécifiques à l'industrie.",
       glowDeskTitle: "GlowDesk",
-      glowDeskText: "Réceptionniste IA pour la beauté.",
+      glowDeskText: "GlowDesk est notre réceptionniste IA pour la beauté.",
       fitDeskTitle: "FitDesk",
-      fitDeskText: "Assistant IA pour les salles de sport et studios de fitness.",
-      workWithHeadline: "Avec Qui Nous Travaillons",
-      workWithItems: ["Entreprises de beauté", "PME de services", "Partenaires"],
+      fitDeskText: "FitDesk est notre assistant IA pour les salles de sport.",
+      workWithHeadline: "Avec qui nous travaillons",
+      workWithItems: [
+        "Entreprises de beauté et d'esthétique",
+        "PME basées sur les services",
+        "Partenaires de solutions IA"
+      ],
       visionHeadline: "Notre Vision",
-      visionText: "Un accueil numérique intelligent pour tous.",
-      ctaHeadline: "Contact",
-      ctaText: "Découvrez comment Orienta peut vous aider."
+      visionText: "Nous envisageons un avenir où chaque entreprise de services a accès à une réception numérique intelligente.",
+      ctaHeadline: "Contactez-nous",
+      ctaText: "Découvrez comment Orienta peut aider votre entreprise à se développer."
     },
     demo: {
       headline: "Découvrez GlowDesk",
@@ -255,46 +353,46 @@ export const translations = {
       waHeader: "Assistant GlowDesk",
       waSub: "Propulsé par Orienta • En ligne",
       waInput: "Tapez un message...",
-      voiceTitle: "Démo Vocale IA",
-      voiceDesc: "Simulez un appel entrant en direct pour votre entreprise.",
+      voiceTitle: "Démo IA Vocale",
+      voiceDesc: "Simulez un appel entrant vers votre bureau.",
       voiceCTA: "Lancer la simulation",
       voiceInbound: "Appel entrant...",
       voiceMute: "Muet",
       voiceEnd: "Raccrocher",
-      voiceInfo: "Infos",
+      voiceInfo: "Info",
       calTitle: "Tableau de Bord Unifié",
       calSub: "Synchro en temps réel",
       calSync: "Orienta Cloud Sync",
-      calSuccess: "Réservation confirmée !",
-      calSuccessSub: "Le créneau pour {slot} est réservé.",
+      calSuccess: "Réservation Confirmée !",
+      calSuccessSub: "Le créneau de {slot} a été réservé avec succès.",
       calAnother: "Réserver un autre créneau",
       calReserved: "Occupé",
       calBookNow: "Réserver"
     },
     pricing: {
-      headline: "Des plans adaptés",
-      subheadline: "Une tarification transparente conçue pour évoluer avec vous.",
+      headline: "Des plans pour chaque échelle",
+      subheadline: "Tarification transparente conçue pour évoluer avec vous.",
       mostPopular: "Recommandé",
       perMo: "/mois",
       tiers: [
         { name: "Lite", price: "49", desc: "Pour les indépendants", cta: "Démarrer Lite" },
-        { name: "Professionnel", price: "99", desc: "Idéal pour les studios établis", cta: "Démarrer Pro" },
-        { name: "Entreprise", price: "149", desc: "Multi-sites et industries sur mesure", cta: "Contacter Orienta" }
+        { name: "Professionnel", price: "99", desc: "Idéal pour les cliniques et studios", cta: "Démarrer Pro" },
+        { name: "Entreprise", price: "149", desc: "Multi-sites et sur mesure", cta: "Contacter Orienta" }
       ]
     },
     contact: {
       headline: "Prêt à moderniser votre accueil ?",
       subheadline: "Planifiez une démo avec l'équipe Orienta.",
-      points: ["Essai gratuit 14 jours", "Configuration par industrie", "Support prioritaire"],
+      points: ["Essai gratuit de 14 jours", "Configuration spécifique", "Support prioritaire"],
       trusted: "Approuvé par plus de 500 prestataires",
       success: "Message envoyé !",
-      successSub: "Un spécialiste Orienta vous contactera bientôt.",
+      successSub: "Un spécialiste Orienta vous contactera sous peu.",
       labels: {
         biz: "Nom de l'entreprise",
         name: "Nom du contact",
-        email: "E-mail pro",
-        phone: "Téléphone",
-        type: "Secteur d'activité"
+        email: "Email professionnel",
+        phone: "Téléphone mobile",
+        type: "Type d'industrie"
       },
       types: ["Beauté & Esthétique", "Fitness & Yoga", "Bien-être & Spa", "Cliniques spécialisées", "Services Boutique"],
       cta: "Obtenir ma démo gratuite"
@@ -307,141 +405,195 @@ export const translations = {
       pricing: "الأسعار",
       howItWorks: "كيف يعمل",
       about: "من نحن",
-      cta: "طلب تجربة"
+      cta: "طلب تجربة",
+      login: "تسجيل الدخول",
+      dashboard: "لوحة التحكم",
+      logout: "خروج"
+    },
+    auth: {
+      title: "بوابة العملاء",
+      subtitle: "دخول آمن لمكتب Orienta الخاص بك",
+      userLabel: "اسم المستخدم",
+      passLabel: "كلمة المرور",
+      btn: "دخول",
+      error: "خطأ. جرب admin / admin",
+      forgot: "نسيت كلمة المرور؟"
+    },
+    dashboard: {
+      sidebar: {
+        overview: "نظرة عامة",
+        bookings: "الحجوزات",
+        calendar: "التقويم",
+        billing: "الفواتير",
+        profile: "الملف الشخصي"
+      },
+      overview: {
+        title: "نظرة على العمل",
+        subtitle: "أداء مساعد الذكاء الاصطناعي",
+        stats: {
+          total: "إجمالي الحجوزات",
+          revenue: "الدخل التقديري",
+          leads: "عملاء جدد",
+          noshow: "عدم الحضور"
+        },
+        chartTitle: "اتجاهات الحجز"
+      },
+      calendar: {
+        title: "مزامنة جوجل",
+        status: "الحالة: متصل",
+        btn: "مزامنة الآن",
+        connected: "متصل بـ {email}"
+      },
+      billing: {
+        title: "الخطة والفواتير",
+        currentPlan: "الخطة الحالية",
+        manage: "إدارة الاشتراك",
+        history: "سجل الفواتير"
+      }
     },
     hero: {
-      badge: "الجيل القادم من الذكاء الاصطناعي للخدمات",
-      headline: "لا تفقد أي ",
-      headlineItalic: "عميل",
-      headlineEnd: " بعد اليوم",
-      subheadline: "مساعد ذكاء اصطناعي ذكي من Orienta يرد على المكالمات، ورسائل الواتساب، ويدير الحجوزات تلقائياً.",
-      primaryCTA: "اطلب تجربة",
+      badge: "ذكاء اصطناعي من الجيل القادم لخدمات الأعمال",
+      headline: "لا تفوت ",
+      headlineItalic: "عميلاً",
+      headlineEnd: " أبداً مرة أخرى",
+      subheadline: "مساعد ذكي من Orienta يرد على المكالمات ورسائل الواتساب ويدير الحجوزات تلقائياً.",
+      primaryCTA: "طلب تجربة",
       secondaryCTA: "شاهد كيف يعمل",
-      check1: "بدون التزام طويل",
-      check2: "متوافق مع الخصوصية",
+      check1: "بدون التزام طويل الأمد",
+      check2: "متوافق مع قوانين حماية البيانات",
       check3: "إلغاء في أي وقت",
       bookingLabel: "حجز جديد",
-      bookingService: "خدمة في الساعة 2:00"
+      bookingService: "خدمة في الساعة 2:00 مساءً"
     },
     problems: {
       badge: "التحدي",
-      headline: "إدارة مكتبك لا يجب أن تعيق ",
-      headlineItalic: "نمو",
-      headlineEnd: " أعمالك.",
-      subheadline: "الجدولة اليدوية هي العائق الأكبر لشركات الخدمات. مع GlowDesk، لا تضطر للاختيار بين العميل والهاتف.",
+      headline: "إدارة مكتبك لا يجب أن تعني ",
+      headlineItalic: "فقدان",
+      headlineEnd: " النمو.",
+      subheadline: "الجدولة اليدوية هي العائق أمام الشركات الخدمية.",
       items: [
-        { title: "مكالمات فائتة", desc: "تكون مشغولاً مع عميل ويرن الهاتف. عميل آخر يذهب للمنافس." },
-        { title: "خسارة خارج الدوام", desc: "GlowDesk يعمل بينما أنت ترتاح." },
-        { title: "تشتت الموظفين", desc: "خبراؤك يجب أن يركزوا على خدماتهم، وليس على الاستقبال." }
+        { title: "مكالمات فائتة", desc: "أنت مشغول في جلسة والهاتف يرن. عميل آخر يذهب للمنافس." },
+        { title: "خسارة خارج الأوقات", desc: "معظم العملاء يحجزون عندما تكون مغلقاً. GlowDesk يعمل بينما ترتاح." },
+        { title: "تشتت الموظفين", desc: "يجب على محترفيك تقديم الخدمات، لا العمل كموظفي استقبال." }
       ],
-      testimonial: "\"GlowDesk غير طريقة عملنا. لم نعد نقلق بشأن الهاتف.\"",
-      author: "ماريا، صاحبة مركز تجميل واسترخاء"
+      testimonial: "\"GlowDesk غير سير عملنا. لم نعد نقلق بشأن الهاتف خلال ساعات الذروة.\"",
+      author: "ماريا، مالكة استوديو"
     },
     solutions: {
       badge: "الحل",
-      headline: "مصمم لقطاع ",
-      headlineAccent: "الاسترخاء والجمال",
-      subheadline: "GlowDesk يفهم تفاصيل الخدمات الاحترافية—من مدة الجلسات إلى سياسات الإلغاء.",
+      headline: "بني لقطاع ",
+      headlineAccent: "الجمال والعناية",
+      subheadline: "GlowDesk يفهم تفاصيل الخدمات المهنية.",
       items: [
-        { title: "موظف استقبال صوتي", desc: "يرد 24/7 بصوت طبيعي يمثل علامتك التجارية بامتياز." },
-        { title: "مدير الواتساب", desc: "يحول المحادثات إلى حجوزات مباشرة." },
-        { title: "مزامنة شاملة", desc: "يتكامل مع جوجل، أوتلوك، وأغلب منصات الجدولة." },
-        { title: "استشارة ذكية", desc: "يجيب على أسئلة الخدمات ويفرز العملاء." },
-        { title: "تذكيرات استباقية", desc: "يجيب على أسئلة الخدمات ويفرز العملاء." },
-        { title: "أمان المؤسسات", desc: "مبني على بنية Orienta التحتية الآمنة." }
+        { title: "موظف استقبال صوتي", desc: "يرد على المكالمات 24/7 بصوت طبيعي." },
+        { title: "مدير واتساب", desc: "يحول المحادثات إلى حجوزات مباشرة." },
+        { title: "مزامنة شاملة", desc: "يتكامل مع جوجل وأوتلوك." },
+        { title: "استشارة ذكية", desc: "يجيب على أسئلة الخدمات." },
+        { title: "تذكيرات استباقية", desc: "يقلل بشكل كبير من حالات عدم الحضور." },
+        { title: "أمن الشركات", desc: "بني على بنية Orienta الآمنة." }
       ]
     },
     howItWorks: {
       headline: "كيف يعمل",
-      subheadline: "البدء مع GlowDesk سلس ولا يتطلب أي مهارات تقنية.",
+      subheadline: "البدء مع GlowDesk سلس ولا يتطلب مهارات تقنية.",
       steps: [
-        { title: "ربط التقويم الخاص بك", desc: "تكامل مع Google أو Outlook أو برنامج الصالون الحالي في دقائق." },
-        { title: "الذكاء الاصطناعي يتعامل مع الطلبات", desc: "عندما يتصل العملاء أو يرسلون رسائل، يتولى ذكاؤنا الاصطناعي المهمة فوراً." },
-        { title: "استرخِ واخدم عملائك", desc: "شاهد جدولك يمتلئ تلقائياً بينما تركز أنت على تقديم تقديم خدمات مذهلة." }
+        { title: "ربط التقويم", desc: "تكامل مع جوجل أو أوتلوك في دقائق." },
+        { title: "الذكاء الاصطناعي يعالج الطلبات", desc: "عندما يتصل العملاء، يتولى مساعدنا الرد فوراً." },
+        { title: "استرخِ واخدم", desc: "شاهد جدولك يمتلئ تلقائياً." }
       ]
     },
     about: {
-      title: "حول Orienta",
+      title: "عن Orienta",
       whoHeadline: "من نحن",
-      whoText: "Orienta هي شركة تكنولوجيا تركز على بناء مساعدين مدعومين بالذكاء الاصطناعي.",
+      whoText: "Orienta هي شركة تقنية تركز على بناء مساعدين مدعومين بالذكاء الاصطناعي.",
       missionHeadline: "مهمتنا",
-      missionText: "مساعدة الشركات على عدم تفويت أي فرصة.",
+      missionText: "مهمتنا بسيطة: مساعدة الشركات على عدم تفويت أي فرصة.",
       whatWeDoHeadline: "ماذا نفعل",
       whatWeDoSub: "تطور Orienta مساعدي ذكاء اصطناعي يمكنهم:",
-      whatWeDoItems: ["الرد على المكالمات 24/7", "إدارة المحادثات", "توجيه العملاء", "حجز المواعيد", "تقليل ضغط العمل"],
-      whatWeDoEnd: "حلولنا تقدم قيمة فورية.",
+      whatWeDoItems: [
+        "الرد على المكالمات والرسائل 24/7",
+        "التعامل مع المحادثات المتكررة",
+        "توجيه العملاء للخدمة الصحيحة",
+        "حجز المواعيد بسلاسة",
+        "تقليل الحمل التشغيلي"
+      ],
+      whatWeDoEnd: "حلولنا مصممة لتقديم قيمة فورية.",
       approachHeadline: "نهجنا",
-      approachIntro: "نتبع ثلاثة مبادئ أساسية:",
+      approachIntro: "في Orienta، نتبع ثلاثة مبادئ أساسية:",
       approachItems: [
-        { title: "1. التوجيه لا الاستبدال", desc: "الذكاء الاصطناعي يدعم البشر." },
-        { title: "2. الأمان والبساطة", desc: "أنظمة آمنة وسهلة الاستخدام." },
-        { title: "3. تأثير حقيقي", desc: "التركيز على توفير الوقت وزيادة الدخل." }
+        { title: "1. التوجيه لا الاستبدال", desc: "مساعدونا مصممون للمساعدة والتوجيه." },
+        { title: "2. الأمان والبساطة", desc: "نتجنب التعقيد غير الضروري." },
+        { title: "3. تأثير حقيقي على الأعمال", desc: "كل ميزة نبنيها تهدف لزيادة القيمة." }
       ],
       productsHeadline: "منتجاتنا",
-      productsIntro: "حلول مخصصة لاحتياجات العمل الحقيقية.",
+      productsIntro: "تطور Orienta حلولاً متخصصة لكل قطاع.",
       glowDeskTitle: "GlowDesk",
-      glowDeskText: "موظف الاستقبال الذكي لقطاع التجميل.",
+      glowDeskText: "GlowDesk هو موظف الاستقبال الذكي لقطاع التجميل.",
       fitDeskTitle: "FitDesk",
-      fitDeskText: "مساعد الذكاء الاصطناعي للصالات الرياضية ومراكز اللياقة البدنية.",
-      workWithHeadline: "مع من نعمل",
-      workWithItems: ["شركات التجميل", "المنشآت الخدمية الصغيرة والمتوسطة", "الشركاء"],
+      fitDeskText: "FitDesk هو مساعد الذكاء الاصطناعي للصالات الرياضية.",
+      workWithHeadline: "من نعمل معهم",
+      workWithItems: [
+        "شركات التجميل والجمال",
+        "الشركات الصغيرة والمتوسطة الخدمية",
+        "الشركاء الذين يبحثون عن حلول الذكاء الاصطناعي"
+      ],
       visionHeadline: "رؤيتنا",
-      visionText: "مكتب استقبال رقمي ذكي لكل عمل خدمي.",
+      visionText: "نتصور مستقبلاً حيث تمتلك كل شركة خدمية مكتب استقبال رقمي ذكي.",
       ctaHeadline: "تواصل معنا",
       ctaText: "اكتشف كيف يمكن لـ Orienta مساعدة عملك على النمو."
     },
     demo: {
-      headline: "اختبر GlowDesk",
-      subheadline: "شاهد كيف يتفاعل ذكاء Orienta مع عملائك.",
+      headline: "جرب GlowDesk",
+      subheadline: "شاهد كيف يتفاعل الذكاء الاصطناعي مع عملائك.",
       whatsapp: "واتساب",
       voice: "صوت",
       calendar: "التقويم",
       waHeader: "مساعد GlowDesk",
-      waSub: "بدعم من Orienta • متصل",
+      waSub: "مدعوم من Orienta • متصل",
       waInput: "اكتب رسالة...",
-      voiceTitle: "تجربة الصوت",
-      voiceDesc: "حاكي مكالمة واردة مباشرة إلى مكتب عملك.",
-      voiceCTA: "ابدأ المحاكاة",
-      voiceInbound: "اتصال وارد...",
+      voiceTitle: "تجربة الصوت الذكي",
+      voiceDesc: "محاكاة مكالمة واردة مباشرة إلى مكتبك.",
+      voiceCTA: "بدء المحاكاة",
+      voiceInbound: "مكالمة واردة...",
       voiceMute: "كتم",
       voiceEnd: "إنهاء",
       voiceInfo: "معلومات",
-      calTitle: "لوحة التحكم الموحدة",
+      calTitle: "لوحة تحكم موحدة",
       calSub: "مزامنة فورية عبر المنصات",
-      calSync: "مزامنة Orienta السحابية",
+      calSync: "سحابة Orienta",
       calSuccess: "تم تأكيد الحجز!",
       calSuccessSub: "تم حجز موعد {slot} بنجاح.",
       calAnother: "حجز موعد آخر",
-      calReserved: "مشغول",
-      calBookNow: "احجز"
+      calReserved: "محجوز",
+      calBookNow: "احجز الآن"
     },
     pricing: {
-      headline: "خطط لكل المستويات",
-      subheadline: "أسعار شفافة مصممة لتنمو مع أعمالك.",
-      mostPopular: "موصى به",
+      headline: "خطط لكل حجم",
+      subheadline: "أسعار شفافة مصممة لتنمو مع عملك.",
+      mostPopular: "الأكثر طلباً",
       perMo: "/شهرياً",
       tiers: [
-        { name: "الأساسية", price: "49", desc: "للمحترفين المستقلين", cta: "ابدأ الآن" },
-        { name: "الاحترافية", price: "99", desc: "للعيادات والمراكز المتميزة", cta: "ابدأ الآن" },
-        { name: "المتقدمة", price: "149", desc: "للفروع المتعددة وصناعات مخصصة", cta: "اتصل بـ Orienta" }
+        { name: "Lite", price: "49", desc: "للمحترفين المستقلين", cta: "ابدأ مع Lite" },
+        { name: "Professional", price: "99", desc: "للعيادات والاستوديوهات", cta: "ابدأ مع Pro" },
+        { name: "Enterprise", price: "149", desc: "للفروع المتعددة", cta: "تواصل مع Orienta" }
       ]
     },
     contact: {
-      headline: "جاهز لتطوير مكتبك؟",
-      subheadline: "حدد موعداً مع فريق Orienta لرؤية GlowDesk.",
-      points: ["تجربة مجانية 14 يوماً", "إعداد مخصص لكل قطاع", "دعم أولوية مباشر"],
-      trusted: "موثوق من قبل أكثر من 500 مقدم خدمة",
-      success: "تم الإرسال!",
-      successSub: "سيتواصل معك خبير من Orienta قريباً.",
+      headline: "مستعد لتطوير مكتبك؟",
+      subheadline: "احجز موعداً للتجربة مع فريق Orienta.",
+      points: ["تجربة مجانية 14 يوماً", "إعداد مخصص لكل قطاع", "دعم فني متميز"],
+      trusted: "موثوق من أكثر من 500 مزود خدمة",
+      success: "تم إرسال الرسالة!",
+      successSub: "سيتواصل معك متخصص من Orienta قريباً.",
       labels: {
         biz: "اسم العمل",
-        name: "اسم جهة الاتصال",
-        email: "البريد المهني",
-        phone: "رقم الهاتف",
+        name: "اسم التواصل",
+        email: "البريد الإلكتروني",
+        phone: "الجوال",
         type: "نوع القطاع"
       },
-      types: ["التجميل والاسترخاء", "اللياقة واليوغا", "مراكز الاستشفاء", "عيادات متخصصة", "خدمات بوتيك"],
-      cta: "احصل على العرض المجاني"
+      types: ["التجميل والعناية", "اللياقة واليوغا", "السبا والرفاهية", "العيادات المتخصصة", "خدمات بوتيك"],
+      cta: "احصل على تجربتي المجانية"
     }
   }
 };

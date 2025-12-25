@@ -1,19 +1,24 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Globe, ChevronDown } from 'lucide-react';
+import { Menu, X, Globe, ChevronDown, User, LogOut, LayoutDashboard } from 'lucide-react';
 import { useLanguage } from '../i18n/context';
 import { Locale } from '../i18n/translations';
 import OrientaLogo from './OrientaLogo';
+import { User as UserType } from '../App';
 
 interface NavbarProps {
   currentView: 'home' | 'about';
   onViewChange: (view: 'home' | 'about') => void;
+  user: UserType | null;
+  onLogout: () => void;
+  onLoginClick: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ currentView, onViewChange }) => {
+const Navbar: React.FC<NavbarProps> = ({ currentView, onViewChange, user, onLogout, onLoginClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { locale, setLocale, t, isRTL } = useLanguage();
 
   useEffect(() => {
@@ -38,7 +43,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onViewChange }) => {
 
   const handleLinkClick = (e: React.MouseEvent, link: any) => {
     setIsMobileMenuOpen(false);
-    
     if (link.view === 'about') {
       e.preventDefault();
       onViewChange('about');
@@ -46,14 +50,12 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onViewChange }) => {
     } else if (currentView === 'about' && link.view === 'home') {
       e.preventDefault();
       onViewChange('home');
-      // Wait for home view to mount before scrolling
       setTimeout(() => {
         const id = link.href.replace('#', '');
         const el = document.getElementById(id);
         el?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     } else {
-      // Normal anchor behavior on home page
       const id = link.href.replace('#', '');
       const el = document.getElementById(id);
       if (el) {
@@ -67,11 +69,11 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onViewChange }) => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass-effect shadow-sm py-3' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         <button onClick={() => onViewChange('home')} className="flex items-center group bg-transparent border-none p-0 cursor-pointer">
-          <OrientaLogo size={36} className="group-hover:scale-105 transition-transform" />
+          <OrientaLogo size={36} />
         </button>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
@@ -87,57 +89,76 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onViewChange }) => {
             </a>
           ))}
 
-          {/* Language Switcher */}
-          <div className="relative">
-            <button 
-              onClick={() => setIsLangOpen(!isLangOpen)}
-              className="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-rose-600 transition-colors"
-            >
-              <Globe size={16} />
-              <span className="uppercase">{locale}</span>
-              <ChevronDown size={14} className={`transition-transform duration-200 ${isLangOpen ? 'rotate-180' : ''}`} />
-            </button>
-            
-            {isLangOpen && (
-              <div className={`absolute top-full mt-2 w-32 bg-white border border-slate-100 rounded-xl shadow-xl py-2 ${isRTL ? 'left-0' : 'right-0'}`}>
-                {languages.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => {
-                      setLocale(lang.code as Locale);
-                      setIsLangOpen(false);
-                    }}
-                    className={`w-full text-left px-4 py-2 text-sm hover:bg-rose-50 transition-colors ${locale === lang.code ? 'text-rose-600 font-bold' : 'text-slate-600'}`}
-                  >
-                    {lang.label}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          {/* User / Auth Section */}
+          <div className="flex items-center gap-4 pl-4 border-l border-slate-200">
+             {user ? (
+               <div className="relative">
+                 <button 
+                   onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                   className="flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-slate-800 transition-all"
+                 >
+                   <User size={16} />
+                   <span>{user.username}</span>
+                   <ChevronDown size={14} className={isUserMenuOpen ? 'rotate-180' : ''} />
+                 </button>
+                 {isUserMenuOpen && (
+                   <div className={`absolute top-full mt-2 w-48 bg-white border border-slate-100 rounded-xl shadow-xl py-2 ${isRTL ? 'left-0' : 'right-0'}`}>
+                      <button onClick={() => { (onViewChange as any)('dashboard'); setIsUserMenuOpen(false); }} className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-slate-700 hover:bg-rose-50 hover:text-rose-600">
+                        <LayoutDashboard size={16} /> {t.nav.dashboard}
+                      </button>
+                      <button onClick={() => { onLogout(); setIsUserMenuOpen(false); }} className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50">
+                        <LogOut size={16} /> {t.nav.logout}
+                      </button>
+                   </div>
+                 )}
+               </div>
+             ) : (
+               <button onClick={onLoginClick} className="text-sm font-bold text-slate-600 hover:text-rose-600 transition-colors">
+                 {t.nav.login}
+               </button>
+             )}
 
-          <a 
-            href="#contact" 
-            onClick={(e) => {
-              e.preventDefault();
-              if (currentView === 'about') {
-                onViewChange('home');
-                setTimeout(() => {
-                  const el = document.getElementById('contact');
-                  el?.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              } else {
-                const el = document.getElementById('contact');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="bg-rose-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-rose-700 transition-all hover:shadow-lg hover:shadow-rose-200"
-          >
-            {t.nav.cta}
-          </a>
+            {/* Language Switcher */}
+            <div className="relative">
+              <button 
+                onClick={() => setIsLangOpen(!isLangOpen)}
+                className="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-rose-600 transition-colors"
+              >
+                <Globe size={16} />
+                <span className="uppercase">{locale}</span>
+              </button>
+              {isLangOpen && (
+                <div className={`absolute top-full mt-2 w-32 bg-white border border-slate-100 rounded-xl shadow-xl py-2 ${isRTL ? 'left-0' : 'right-0'}`}>
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => { setLocale(lang.code as Locale); setIsLangOpen(false); }}
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-rose-50 transition-colors ${locale === lang.code ? 'text-rose-600 font-bold' : 'text-slate-600'}`}
+                    >
+                      {lang.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <a 
+              href="#contact" 
+              onClick={(e) => {
+                e.preventDefault();
+                const id = 'contact';
+                if (currentView === 'about') {
+                  onViewChange('home');
+                  setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 100);
+                } else document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="bg-rose-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-rose-700 transition-all shadow-md shadow-rose-100"
+            >
+              {t.nav.cta}
+            </a>
+          </div>
         </div>
 
-        {/* Mobile Menu Button */}
         <button className="md:hidden text-slate-600" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -145,7 +166,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onViewChange }) => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-slate-100 py-6 px-4 flex flex-col gap-4 shadow-xl">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-slate-100 py-6 px-4 flex flex-col gap-4 shadow-xl max-h-[90vh] overflow-y-auto">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
@@ -156,40 +177,22 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onViewChange }) => {
               {link.name}
             </a>
           ))}
+          {user ? (
+            <button onClick={() => { (onViewChange as any)('dashboard'); setIsMobileMenuOpen(false); }} className="text-left py-2 font-bold text-rose-600 border-b border-slate-50">{t.nav.dashboard}</button>
+          ) : (
+            <button onClick={onLoginClick} className="text-left py-2 font-bold text-slate-600 border-b border-slate-50">{t.nav.login}</button>
+          )}
           <div className="flex gap-4 py-2">
             {languages.map((lang) => (
               <button
                 key={lang.code}
-                onClick={() => {
-                  setLocale(lang.code as Locale);
-                  setIsMobileMenuOpen(false);
-                }}
+                onClick={() => { setLocale(lang.code as Locale); setIsMobileMenuOpen(false); }}
                 className={`px-3 py-1 rounded-lg text-sm font-bold ${locale === lang.code ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-600'}`}
               >
                 {lang.code.toUpperCase()}
               </button>
             ))}
           </div>
-          <a 
-            href="#contact" 
-            className="bg-rose-600 text-white px-6 py-4 rounded-xl text-center font-semibold text-lg"
-            onClick={(e) => {
-              e.preventDefault();
-              setIsMobileMenuOpen(false);
-              if (currentView === 'about') {
-                onViewChange('home');
-                setTimeout(() => {
-                  const el = document.getElementById('contact');
-                  el?.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              } else {
-                const el = document.getElementById('contact');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-          >
-            {t.nav.cta}
-          </a>
         </div>
       )}
     </nav>
