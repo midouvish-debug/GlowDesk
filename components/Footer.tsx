@@ -11,10 +11,17 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ onViewChange }) => {
   const { t, isRTL } = useLanguage();
 
-  const handleNav = (view: 'home' | 'about') => {
+  const handleNav = (view: 'home' | 'about', sectionId?: string) => {
     if (onViewChange) {
       onViewChange(view);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (sectionId) {
+        setTimeout(() => {
+          const el = document.getElementById(sectionId);
+          el?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
   };
 
@@ -40,9 +47,10 @@ const Footer: React.FC<FooterProps> = ({ onViewChange }) => {
           <div className={isRTL ? 'order-3' : ''}>
             <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-wider text-xs">{t.nav.benefits}</h4>
             <ul className="space-y-4 text-sm text-slate-500">
-              <li><button onClick={() => handleNav('home')} className="hover:text-rose-600 transition-colors bg-transparent border-none p-0 cursor-pointer">{t.nav.benefits}</button></li>
-              <li><button onClick={() => handleNav('home')} className="hover:text-rose-600 transition-colors bg-transparent border-none p-0 cursor-pointer">{t.nav.demo}</button></li>
-              <li><button onClick={() => handleNav('home')} className="hover:text-rose-600 transition-colors bg-transparent border-none p-0 cursor-pointer">{t.nav.pricing}</button></li>
+              <li><button onClick={() => handleNav('home', 'benefits')} className="hover:text-rose-600 transition-colors bg-transparent border-none p-0 cursor-pointer">{t.nav.benefits}</button></li>
+              <li><button onClick={() => handleNav('home', 'demo')} className="hover:text-rose-600 transition-colors bg-transparent border-none p-0 cursor-pointer">{t.nav.demo}</button></li>
+              <li><button onClick={() => handleNav('home', 'pricing')} className="hover:text-rose-600 transition-colors bg-transparent border-none p-0 cursor-pointer">{t.nav.pricing}</button></li>
+              <li><button onClick={() => handleNav('home', 'how-it-works')} className="hover:text-rose-600 transition-colors bg-transparent border-none p-0 cursor-pointer">{t.nav.howItWorks}</button></li>
             </ul>
           </div>
 
@@ -51,7 +59,7 @@ const Footer: React.FC<FooterProps> = ({ onViewChange }) => {
             <ul className="space-y-4 text-sm text-slate-500">
               <li><button onClick={() => handleNav('about')} className="hover:text-rose-600 transition-colors bg-transparent border-none p-0 cursor-pointer">About Orienta</button></li>
               <li><a href="#" className="hover:text-rose-600 transition-colors">Global Solutions</a></li>
-              <li><button onClick={() => handleNav('home')} className="hover:text-rose-600 transition-colors bg-transparent border-none p-0 cursor-pointer">Contact</button></li>
+              <li><button onClick={() => handleNav('home', 'contact')} className="hover:text-rose-600 transition-colors bg-transparent border-none p-0 cursor-pointer">Contact</button></li>
             </ul>
           </div>
 

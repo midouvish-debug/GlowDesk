@@ -37,16 +37,29 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onViewChange }) => {
   ];
 
   const handleLinkClick = (e: React.MouseEvent, link: any) => {
+    setIsMobileMenuOpen(false);
+    
     if (link.view === 'about') {
       e.preventDefault();
       onViewChange('about');
-      setIsMobileMenuOpen(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (currentView === 'about' && link.view === 'home') {
-      // If we are on about page and click a home anchor, switch to home first
+      e.preventDefault();
       onViewChange('home');
-      setIsMobileMenuOpen(false);
+      // Wait for home view to mount before scrolling
+      setTimeout(() => {
+        const id = link.href.replace('#', '');
+        const el = document.getElementById(id);
+        el?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
     } else {
-      setIsMobileMenuOpen(false);
+      // Normal anchor behavior on home page
+      const id = link.href.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -106,13 +119,16 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onViewChange }) => {
           <a 
             href="#contact" 
             onClick={(e) => {
+              e.preventDefault();
               if (currentView === 'about') {
-                e.preventDefault();
                 onViewChange('home');
                 setTimeout(() => {
                   const el = document.getElementById('contact');
                   el?.scrollIntoView({ behavior: 'smooth' });
                 }, 100);
+              } else {
+                const el = document.getElementById('contact');
+                el?.scrollIntoView({ behavior: 'smooth' });
               }
             }}
             className="bg-rose-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-rose-700 transition-all hover:shadow-lg hover:shadow-rose-200"
@@ -158,14 +174,17 @@ const Navbar: React.FC<NavbarProps> = ({ currentView, onViewChange }) => {
             href="#contact" 
             className="bg-rose-600 text-white px-6 py-4 rounded-xl text-center font-semibold text-lg"
             onClick={(e) => {
+              e.preventDefault();
               setIsMobileMenuOpen(false);
               if (currentView === 'about') {
-                e.preventDefault();
                 onViewChange('home');
                 setTimeout(() => {
                   const el = document.getElementById('contact');
                   el?.scrollIntoView({ behavior: 'smooth' });
                 }, 100);
+              } else {
+                const el = document.getElementById('contact');
+                el?.scrollIntoView({ behavior: 'smooth' });
               }
             }}
           >
