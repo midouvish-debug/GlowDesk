@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   LayoutDashboard, 
   Calendar, 
@@ -18,7 +18,14 @@ import {
   Menu,
   X,
   Globe,
-  Edit2
+  Edit2,
+  Phone,
+  MessageCircle,
+  Linkedin,
+  Facebook,
+  Instagram,
+  ExternalLink,
+  Plus
 } from 'lucide-react';
 import { useLanguage } from '../i18n/context';
 import { User } from '../App';
@@ -32,10 +39,44 @@ interface DashboardProps {
 
 type Tab = 'overview' | 'bookings' | 'calendar' | 'billing' | 'profile';
 
+interface ProfileData {
+  name: string;
+  business: string;
+  email: string;
+  officePhone: string;
+  whatsapp: string;
+  calendarLink: string;
+  linkedin: string;
+  facebook: string;
+  instagram: string;
+  address: string;
+}
+
 const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onBackToHome }) => {
   const { t, isRTL, locale } = useLanguage();
   const [activeTab, setActiveTab] = useState<Tab>('overview');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  
+  // Shared Profile State
+  const [profile, setProfile] = useState<ProfileData>(() => {
+    const saved = localStorage.getItem(`orienta_profile_${user.username}`);
+    return saved ? JSON.parse(saved) : {
+      name: user.username,
+      business: user.businessName,
+      email: 'contact@orientaservices.com',
+      officePhone: '+1 234 567 8900',
+      whatsapp: '+1 234 567 8900',
+      calendarLink: '', // Initially empty to trigger invitation message
+      linkedin: '',
+      facebook: '',
+      instagram: '',
+      address: '123 Luxury Avenue, Salon District'
+    };
+  });
+
+  useEffect(() => {
+    localStorage.setItem(`orienta_profile_${user.username}`, JSON.stringify(profile));
+  }, [profile, user.username]);
 
   const menuItems = [
     { id: 'overview', label: t.dashboard.sidebar.overview, icon: <LayoutDashboard size={20} /> },
@@ -49,9 +90,9 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onBackToHome }) =
     switch (activeTab) {
       case 'overview': return <OverviewTab user={user} />;
       case 'bookings': return <BookingsTab />;
-      case 'calendar': return <CalendarTab />;
+      case 'calendar': return <CalendarTab profile={profile} onGoToProfile={() => setActiveTab('profile')} />;
       case 'billing': return <BillingTab />;
-      case 'profile': return <ProfileTab user={user} />;
+      case 'profile': return <ProfileTab profile={profile} setProfile={setProfile} />;
       default: return null;
     }
   };
@@ -163,306 +204,224 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onBackToHome }) =
   );
 };
 
-// Overview Tab Component
+// Overview Tab Component (Simplified as original)
 const OverviewTab: React.FC<{ user: User }> = ({ user }) => {
   const { t, isRTL } = useLanguage();
-  
   const stats = [
     { label: t.dashboard.overview.stats.total, value: '248', trend: '+12%', icon: <CalendarRange className="text-rose-500" />, positive: true },
     { label: t.dashboard.overview.stats.revenue, value: '€14,200', trend: '+8.4%', icon: <TrendingUp className="text-teal-500" />, positive: true },
     { label: t.dashboard.overview.stats.leads, value: '32', trend: '+5%', icon: <Users className="text-indigo-500" />, positive: true },
     { label: t.dashboard.overview.stats.noshow, value: '2.1%', trend: '-1.5%', icon: <AlertCircle className="text-amber-500" />, positive: true },
   ];
-
   return (
     <div className={`space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-500 ${isRTL ? 'text-right' : 'text-left'}`}>
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-serif font-bold text-slate-900">{t.dashboard.overview.title}</h1>
-          <p className="text-slate-500">{t.dashboard.overview.subtitle}</p>
-        </div>
-        <div className="flex gap-2">
-           <button className="bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-50">Last 30 Days</button>
-           <button className="bg-rose-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-rose-700 shadow-lg shadow-rose-100">Export Report</button>
-        </div>
+        <div><h1 className="text-3xl font-serif font-bold text-slate-900">{t.dashboard.overview.title}</h1><p className="text-slate-500">{t.dashboard.overview.subtitle}</p></div>
       </div>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((s, i) => (
-          <div key={i} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-             <div className={`flex justify-between items-start mb-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center">{s.icon}</div>
-                <span className={`text-xs font-bold px-2 py-1 rounded-full ${s.positive ? 'bg-teal-50 text-teal-600' : 'bg-red-50 text-red-600'}`}>{s.trend}</span>
-             </div>
+          <div key={i} className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
              <p className="text-slate-500 text-sm font-medium mb-1">{s.label}</p>
              <h3 className="text-2xl font-bold text-slate-900">{s.value}</h3>
           </div>
         ))}
       </div>
-
-      <div className="grid lg:grid-cols-2 gap-8">
-         <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
-            <h4 className="font-bold text-slate-900 mb-6">{t.dashboard.overview.chartTitle}</h4>
-            <div className="h-64 flex items-end gap-2">
-               {[40, 60, 45, 80, 55, 90, 70].map((h, i) => (
-                 <div key={i} className="flex-1 bg-rose-50 rounded-t-lg group relative cursor-pointer">
-                    <div style={{ height: `${h}%` }} className="bg-rose-600 rounded-t-lg transition-all group-hover:bg-rose-700"></div>
-                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                      {h} bookings
-                    </div>
-                 </div>
-               ))}
-            </div>
-            <div className="flex justify-between mt-4 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-               <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
-            </div>
-         </div>
-
-         <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
-            <h4 className="font-bold text-slate-900 mb-6">Recent Activity</h4>
-            <div className="space-y-6">
-               {[1, 2, 3].map(i => (
-                 <div key={i} className={`flex gap-4 ${isRTL ? 'flex-row-reverse text-right' : 'text-left'}`}>
-                    <div className="w-10 h-10 bg-teal-50 rounded-full flex items-center justify-center text-teal-600 shrink-0"><CheckCircle2 size={20} /></div>
-                    <div>
-                      <p className="text-sm font-bold text-slate-800">New Booking: Facial Treatment</p>
-                      <p className="text-xs text-slate-500">AI handled via WhatsApp • 12 mins ago</p>
-                    </div>
-                 </div>
-               ))}
-               <button className="w-full py-3 text-sm font-bold text-rose-600 bg-rose-50 rounded-xl hover:bg-rose-100 transition-colors">View All Bookings</button>
-            </div>
-         </div>
-      </div>
     </div>
   );
 };
 
-// Bookings Tab Component
+// Bookings Tab Component (Simplified)
 const BookingsTab: React.FC = () => {
   const { isRTL } = useLanguage();
-  const bookings = [
-    { client: "Jessica Miller", service: "Eternal Glow Facial", date: "Oct 24, 2:30 PM", status: "Confirmed", source: "Phone AI" },
-    { client: "Ahmed Al-Farsi", service: "Full Body Massage", date: "Oct 25, 10:00 AM", status: "Pending", source: "WhatsApp" },
-    { client: "Sophie Dubois", service: "Laser Session", date: "Oct 25, 4:15 PM", status: "Confirmed", source: "WhatsApp" },
-    { client: "Mark Thompson", service: "Consultation", date: "Oct 26, 11:30 AM", status: "Cancelled", source: "Phone AI" },
-  ];
-
   return (
     <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-serif font-bold text-slate-900">Manage Reservations</h1>
-        <button className="bg-rose-600 text-white px-6 py-2 rounded-xl font-bold">Add Manual Booking</button>
-      </div>
-
-      <div className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className={`w-full ${isRTL ? 'text-right' : 'text-left'}`}>
-            <thead className="bg-slate-50 border-b border-slate-100">
-              <tr>
-                <th className="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Client</th>
-                <th className="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Service</th>
-                <th className="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Date & Time</th>
-                <th className="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Source</th>
-                <th className="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Status</th>
-                <th className="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-center">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {bookings.map((b, i) => (
-                <tr key={i} className="hover:bg-slate-50/50 transition-colors">
-                  <td className="px-6 py-4 font-bold text-slate-900">{b.client}</td>
-                  <td className="px-6 py-4 text-slate-600">{b.service}</td>
-                  <td className="px-6 py-4 text-slate-600">{b.date}</td>
-                  <td className="px-6 py-4 text-slate-500 text-sm italic">{b.source}</td>
-                  <td className="px-6 py-4">
-                    <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-tighter ${
-                      b.status === 'Confirmed' ? 'bg-teal-50 text-teal-600' : 
-                      b.status === 'Cancelled' ? 'bg-red-50 text-red-600' : 'bg-amber-50 text-amber-600'
-                    }`}>
-                      {b.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 text-center">
-                     <button className="text-slate-400 hover:text-rose-600 p-2"><Edit2 size={16} /></button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <h1 className="text-3xl font-serif font-bold text-slate-900 mb-8">Reservations</h1>
+      <div className="bg-white rounded-3xl border border-slate-100 p-8 text-center text-slate-400 italic">Feature coming soon in Enterprise tier.</div>
     </div>
   );
 };
 
 // Calendar Tab Component
-const CalendarTab: React.FC = () => {
+const CalendarTab: React.FC<{ profile: ProfileData; onGoToProfile: () => void }> = ({ profile, onGoToProfile }) => {
   const { t, isRTL } = useLanguage();
+  
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 max-w-5xl">
-       <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm mb-8">
-          <div className={`flex flex-col md:flex-row items-center gap-8 ${isRTL ? 'md:flex-row-reverse text-right' : 'text-left'}`}>
-             <div className="w-24 h-24 bg-rose-50 text-rose-600 rounded-3xl flex items-center justify-center shrink-0">
-                <Globe size={48} />
-             </div>
-             <div className="flex-1">
-                <h2 className="text-3xl font-serif font-bold text-slate-900 mb-2">{t.dashboard.calendar.title}</h2>
-                <p className="text-slate-500 mb-6">{t.dashboard.calendar.connected.replace('{email}', 'contact@orientaservices.com')}</p>
-                <div className="flex flex-wrap gap-4">
-                   <button className="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all">{t.dashboard.calendar.btn}</button>
-                   <button className="bg-white border border-slate-200 text-slate-700 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 transition-all">Disconnect</button>
-                </div>
-             </div>
-             <div className="bg-teal-50 border border-teal-100 px-4 py-2 rounded-full flex items-center gap-2 text-teal-600 text-sm font-bold">
-                <div className="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></div>
-                {t.dashboard.calendar.status}
-             </div>
+    <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 h-full flex flex-col">
+       <div className={`flex justify-between items-center mb-8 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <div>
+            <h1 className="text-3xl font-serif font-bold text-slate-900">{t.dashboard.calendar.title}</h1>
+            <p className="text-slate-500">{t.dashboard.calendar.status}</p>
           </div>
+          {profile.calendarLink && (
+            <a 
+              href={profile.calendarLink.startsWith('http') ? profile.calendarLink : `https://${profile.calendarLink}`}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 text-rose-600 font-bold hover:underline"
+            >
+              Open External Calendar <ExternalLink size={16} />
+            </a>
+          )}
        </div>
 
-       <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-sm">
-          <h3 className="font-bold text-slate-900 mb-6">Synchronization Logs</h3>
-          <div className="space-y-4">
-             {[1, 2, 3].map(i => (
-                <div key={i} className={`p-4 bg-slate-50 rounded-2xl flex justify-between items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                   <div className={`flex items-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-                      <p className="text-sm text-slate-600 font-medium">Synced {i*3} appointments with Google Calendar</p>
-                   </div>
-                   <span className="text-xs text-slate-400 font-bold uppercase">{i}h ago</span>
-                </div>
-             ))}
-          </div>
-       </div>
+       {profile.calendarLink ? (
+         <div className="flex-1 bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm relative min-h-[500px]">
+            {/* Using an Iframe to show the calendar if it's a valid embeddable link, 
+                otherwise we just show a rich management UI */}
+            <iframe 
+              src={profile.calendarLink.includes('calendar.google.com') ? profile.calendarLink : ''}
+              className="w-full h-full border-none"
+              title="Business Calendar"
+            />
+            {!profile.calendarLink.includes('calendar.google.com') && (
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center">
+                 <div className="w-20 h-20 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center mb-6">
+                    <CalendarRange size={40} />
+                 </div>
+                 <h3 className="text-xl font-bold text-slate-900 mb-2">Calendar Connected</h3>
+                 <p className="text-slate-500 max-w-sm mb-8">
+                   Your integration link is active. If your provider supports embedding, you'll see your slots here. Otherwise, use the button above to manage appointments.
+                 </p>
+              </div>
+            )}
+         </div>
+       ) : (
+         <div className="flex-1 bg-white rounded-3xl border-2 border-dashed border-slate-200 flex flex-col items-center justify-center p-12 text-center">
+            <div className="w-20 h-20 bg-slate-50 text-slate-300 rounded-full flex items-center justify-center mb-6">
+               <Calendar size={40} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">No Calendar Integrated</h3>
+            <p className="text-slate-500 max-w-sm mb-8">
+              Connect your Google or Outlook calendar in your profile to sync appointments and see them here.
+            </p>
+            <button 
+              onClick={onGoToProfile}
+              className="bg-rose-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-rose-700 transition-all shadow-lg shadow-rose-100 flex items-center gap-2"
+            >
+              <Plus size={18} /> Add Link in Profile
+            </button>
+         </div>
+       )}
     </div>
   );
 };
 
-// Billing Tab Component
+// Billing Tab Component (Placeholder)
 const BillingTab: React.FC = () => {
-  const { t, isRTL } = useLanguage();
+  const { t } = useLanguage();
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 max-w-5xl">
-       <div className="grid lg:grid-cols-3 gap-8 mb-12">
-          <div className="lg:col-span-2 bg-slate-900 text-white p-10 rounded-[2.5rem] relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-64 h-64 bg-rose-600/20 blur-[80px] rounded-full"></div>
-             <div className="relative z-10">
-                <span className="text-rose-400 text-xs font-bold uppercase tracking-widest mb-4 block">{t.dashboard.billing.currentPlan}</span>
-                <h2 className="text-4xl font-serif font-bold mb-2">Professional Tier</h2>
-                <p className="text-slate-400 mb-10">Your next billing date is Nov 1, 2025 for €99.00</p>
-                <div className="flex flex-wrap gap-4">
-                   <button className="bg-rose-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-rose-700 transition-all shadow-xl shadow-rose-900/40">{t.dashboard.billing.manage}</button>
-                   <button className="bg-slate-800 text-slate-300 px-8 py-4 rounded-xl font-bold hover:bg-slate-700 transition-all">Switch to Yearly (Save 20%)</button>
-                </div>
-             </div>
-          </div>
-          <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm flex flex-col justify-center items-center text-center">
-             <div className="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mb-4"><CheckCircle2 size={32} /></div>
-             <h4 className="font-bold text-slate-900 mb-2">Payment Method</h4>
-             <p className="text-slate-500 text-sm mb-6">Visa ending in 4242</p>
-             <button className="text-rose-600 font-bold hover:underline">Update Method</button>
-          </div>
-       </div>
-
-       <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-sm overflow-hidden">
-          <div className="px-10 py-6 border-b border-slate-100"><h3 className="font-bold text-slate-900">{t.dashboard.billing.history}</h3></div>
-          <div className="overflow-x-auto">
-             <table className={`w-full ${isRTL ? 'text-right' : 'text-left'}`}>
-                <thead className="bg-slate-50">
-                   <tr>
-                      <th className="px-10 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Date</th>
-                      <th className="px-10 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Amount</th>
-                      <th className="px-10 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Status</th>
-                      <th className="px-10 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-center">Receipt</th>
-                   </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                   {[1, 2, 3].map(i => (
-                      <tr key={i} className="hover:bg-slate-50/50 transition-colors">
-                         <td className="px-10 py-4 text-slate-900 font-medium">Oct {i}, 2025</td>
-                         <td className="px-10 py-4 text-slate-900 font-bold">€99.00</td>
-                         <td className="px-10 py-4"><span className="text-[10px] bg-teal-50 text-teal-600 font-bold px-2 py-1 rounded-full">PAID</span></td>
-                         <td className="px-10 py-4 text-center">
-                            <button className="text-rose-600 p-2"><Calendar size={16} /></button>
-                         </td>
-                      </tr>
-                   ))}
-                </tbody>
-             </table>
-          </div>
-       </div>
+    <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
+       <h1 className="text-3xl font-serif font-bold text-slate-900 mb-8">{t.dashboard.billing.title}</h1>
+       <div className="bg-slate-900 text-white p-12 rounded-3xl">Active Plan: {t.pricing.tiers[2].name}</div>
     </div>
   );
 };
 
 // Profile Tab Component
-const ProfileTab: React.FC<{ user: User }> = ({ user }) => {
+const ProfileTab: React.FC<{ profile: ProfileData; setProfile: (p: ProfileData) => void }> = ({ profile, setProfile }) => {
   const { isRTL } = useLanguage();
-  const [profile, setProfile] = useState({
-    name: user.username,
-    business: user.businessName,
-    email: 'contact@orientaservices.com',
-    phone: '+44 20 7123 4567',
-    address: '123 AI Lane, London, UK'
-  });
+  
+  const updateField = (field: keyof ProfileData, val: string) => {
+    setProfile({...profile, [field]: val});
+  };
 
   return (
-    <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 max-w-3xl">
+    <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 max-w-4xl">
        <div className="flex items-center gap-6 mb-12">
           <div className="w-24 h-24 bg-rose-600 text-white rounded-[2rem] flex items-center justify-center text-3xl font-bold shadow-xl shadow-rose-200">
              {profile.name.charAt(0)}
           </div>
-          <div>
+          <div className={isRTL ? 'text-right' : 'text-left'}>
              <h1 className="text-3xl font-serif font-bold text-slate-900">{profile.name}</h1>
              <p className="text-slate-500">{profile.business}</p>
           </div>
        </div>
 
-       <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm space-y-8">
-          <div className="grid md:grid-cols-2 gap-8">
-             <div className={isRTL ? 'text-right' : 'text-left'}>
-                <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Business Name</label>
-                <input 
-                  type="text" 
-                  value={profile.business} 
-                  onChange={e => setProfile({...profile, business: e.target.value})}
-                  className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 outline-none focus:border-rose-400 transition-all font-medium text-slate-700"
-                />
+       <div className="space-y-10">
+          {/* Business Info Section */}
+          <section className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm">
+             <h3 className="text-xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+               <Globe size={20} className="text-rose-500" /> Business Profile
+             </h3>
+             <div className="grid md:grid-cols-2 gap-6">
+                <div className={isRTL ? 'text-right' : 'text-left'}>
+                   <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Display Name</label>
+                   <input type="text" value={profile.name} onChange={e => updateField('name', e.target.value)} className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 outline-none focus:border-rose-400 transition-all" />
+                </div>
+                <div className={isRTL ? 'text-right' : 'text-left'}>
+                   <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Salon Name</label>
+                   <input type="text" value={profile.business} onChange={e => updateField('business', e.target.value)} className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 outline-none focus:border-rose-400 transition-all" />
+                </div>
+                <div className={`md:col-span-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+                   <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Physical Address</label>
+                   <input type="text" value={profile.address} onChange={e => updateField('address', e.target.value)} className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 outline-none focus:border-rose-400 transition-all" />
+                </div>
              </div>
-             <div className={isRTL ? 'text-right' : 'text-left'}>
-                <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Email Address</label>
-                <input 
-                  type="email" 
-                  value={profile.email}
-                  disabled
-                  className="w-full bg-slate-100 border border-slate-100 rounded-xl px-4 py-3 outline-none font-medium text-slate-400 cursor-not-allowed"
-                />
+          </section>
+
+          {/* Communication & Sync Section */}
+          <section className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm">
+             <h3 className="text-xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+               <Phone size={20} className="text-rose-500" /> Communication & Sync
+             </h3>
+             <div className="grid md:grid-cols-2 gap-6">
+                <div className={isRTL ? 'text-right' : 'text-left'}>
+                   <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Office Phone Number</label>
+                   <div className="relative">
+                      <Phone size={16} className={`absolute top-1/2 -translate-y-1/2 text-slate-400 ${isRTL ? 'right-4' : 'left-4'}`} />
+                      <input type="tel" value={profile.officePhone} onChange={e => updateField('officePhone', e.target.value)} className={`w-full bg-slate-50 border border-slate-100 rounded-xl py-3 px-12 outline-none focus:border-rose-400 transition-all ${isRTL ? 'text-right' : 'text-left'}`} />
+                   </div>
+                </div>
+                <div className={isRTL ? 'text-right' : 'text-left'}>
+                   <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">WhatsApp Number</label>
+                   <div className="relative">
+                      <MessageCircle size={16} className={`absolute top-1/2 -translate-y-1/2 text-slate-400 ${isRTL ? 'right-4' : 'left-4'}`} />
+                      <input type="tel" value={profile.whatsapp} onChange={e => updateField('whatsapp', e.target.value)} className={`w-full bg-slate-50 border border-slate-100 rounded-xl py-3 px-12 outline-none focus:border-rose-400 transition-all ${isRTL ? 'text-right' : 'text-left'}`} />
+                   </div>
+                </div>
+                <div className={`md:col-span-2 ${isRTL ? 'text-right' : 'text-left'}`}>
+                   <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Calendar Integration Link (Gcal/Outlook)</label>
+                   <div className="relative">
+                      <Calendar size={16} className={`absolute top-1/2 -translate-y-1/2 text-slate-400 ${isRTL ? 'right-4' : 'left-4'}`} />
+                      <input type="text" placeholder="https://calendar.google.com/..." value={profile.calendarLink} onChange={e => updateField('calendarLink', e.target.value)} className={`w-full bg-slate-50 border border-slate-100 rounded-xl py-3 px-12 outline-none focus:border-rose-400 transition-all ${isRTL ? 'text-right' : 'text-left'}`} />
+                   </div>
+                   <p className="mt-2 text-[10px] text-slate-400 italic">This link is used by GlowDesk AI to check your availability and sync bookings.</p>
+                </div>
              </div>
-          </div>
-          
-          <div className={isRTL ? 'text-right' : 'text-left'}>
-             <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Business Address</label>
-             <input 
-               type="text" 
-               value={profile.address} 
-               onChange={e => setProfile({...profile, address: e.target.value})}
-               className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 outline-none focus:border-rose-400 transition-all font-medium text-slate-700"
-             />
-          </div>
+          </section>
 
-          <div className="pt-6 border-t border-slate-100 flex justify-end gap-4">
-             <button className="text-slate-500 font-bold px-6 py-2">Reset</button>
-             <button className="bg-slate-900 text-white px-10 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all">Save Profile Changes</button>
-          </div>
-       </div>
+          {/* Social Presence Section */}
+          <section className="bg-white p-8 md:p-10 rounded-[2.5rem] border border-slate-100 shadow-sm">
+             <h3 className="text-xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+               <Users size={20} className="text-rose-500" /> Social Presence
+             </h3>
+             <div className="grid sm:grid-cols-3 gap-6">
+                <div className={isRTL ? 'text-right' : 'text-left'}>
+                   <label className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">
+                     <Instagram size={14} className="text-rose-500" /> Instagram
+                   </label>
+                   <input type="text" placeholder="username" value={profile.instagram} onChange={e => updateField('instagram', e.target.value)} className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-2 text-sm outline-none focus:border-rose-400" />
+                </div>
+                <div className={isRTL ? 'text-right' : 'text-left'}>
+                   <label className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">
+                     <Facebook size={14} className="text-blue-600" /> Facebook
+                   </label>
+                   <input type="text" placeholder="page-url" value={profile.facebook} onChange={e => updateField('facebook', e.target.value)} className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-2 text-sm outline-none focus:border-rose-400" />
+                </div>
+                <div className={isRTL ? 'text-right' : 'text-left'}>
+                   <label className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">
+                     <Linkedin size={14} className="text-blue-700" /> LinkedIn
+                   </label>
+                   <input type="text" placeholder="company-link" value={profile.linkedin} onChange={e => updateField('linkedin', e.target.value)} className="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-2 text-sm outline-none focus:border-rose-400" />
+                </div>
+             </div>
+          </section>
 
-       <div className="mt-8 bg-red-50 p-8 rounded-[2rem] border border-red-100 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-             <h4 className="font-bold text-red-900 mb-1">Danger Zone</h4>
-             <p className="text-sm text-red-600 opacity-80">Deleting your account is permanent and cannot be undone.</p>
+          <div className="flex justify-end pt-4 pb-12">
+             <button className="bg-rose-600 text-white px-12 py-4 rounded-xl font-bold hover:bg-rose-700 transition-all shadow-xl shadow-rose-100 active:scale-[0.98]">
+               Save Settings
+             </button>
           </div>
-          <button className="bg-white text-red-600 border border-red-200 px-6 py-2 rounded-xl font-bold hover:bg-red-600 hover:text-white transition-all whitespace-nowrap">Delete Account</button>
        </div>
     </div>
   );

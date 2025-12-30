@@ -74,7 +74,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onSuccess }) => {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   className={`w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-12 outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-50 transition-all ${isRTL ? 'text-right' : 'text-left'}`}
-                  placeholder="admin"
+                  placeholder="Username"
                   required
                 />
               </div>
@@ -91,7 +91,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onClose, onSuccess }) => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className={`w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-12 outline-none focus:border-rose-400 focus:ring-4 focus:ring-rose-50 transition-all ${isRTL ? 'text-right' : 'text-left'}`}
-                  placeholder="admin"
+                  placeholder="Password"
                   required
                 />
               </div>

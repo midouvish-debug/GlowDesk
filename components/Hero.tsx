@@ -6,6 +6,14 @@ import { useLanguage } from '../i18n/context';
 const Hero: React.FC = () => {
   const { t, isRTL } = useLanguage();
 
+  const scrollToDemo = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const demoElement = document.getElementById('demo');
+    if (demoElement) {
+      demoElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-gradient-to-b from-rose-50/50 to-white">
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 w-96 h-96 bg-rose-200 rounded-full blur-[120px] opacity-30 pointer-events-none"></div>
@@ -33,10 +41,13 @@ const Hero: React.FC = () => {
             {t.hero.primaryCTA}
             {isRTL ? <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" /> : <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />}
           </a>
-          <a href="#demo" className="w-full sm:w-auto bg-white text-slate-800 border border-slate-200 px-8 py-4 rounded-full text-lg font-bold hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
+          <button 
+            onClick={scrollToDemo}
+            className="w-full sm:w-auto bg-white text-slate-800 border border-slate-200 px-8 py-4 rounded-full text-lg font-bold hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
+          >
             <Play size={18} fill="currentColor" className={isRTL ? 'rotate-180' : ''} />
             {t.hero.secondaryCTA}
-          </a>
+          </button>
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-slate-500 text-sm font-medium">

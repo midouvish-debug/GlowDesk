@@ -46,11 +46,13 @@ const WhatsAppDemo: React.FC = () => {
   const { t, isRTL, locale } = useLanguage();
   const [messages, setMessages] = useState<{role: 'user' | 'bot', text: string, options?: string[]}[]>([]);
   const [isTyping, setIsTyping] = useState(false);
+  const [stage, setStage] = useState<'service' | 'time' | 'confirmed'>('service');
 
   useEffect(() => {
+    // Initial welcome message
     setMessages([{ role: 'user', text: locale === 'ar' ? "أهلاً، أريد حجز موعد من فضلك" : (locale === 'fr' ? "Bonjour, j'aimerais prendre rendez-vous." : "Hi, I'd like to book an appointment please.") }]);
     triggerBotResponse(
-      locale === 'ar' ? "أهلاً بك! يمكنني مساعدتك في ذلك. أي خدمة تود حجزها؟" : (locale === 'fr' ? "Bonjour ! Je peux vous aider. Quel service souhaitez-vous ?" : "Hello! I can certainly help you with that. Which service would you like to book?"),
+      locale === 'ar' ? "أهلاً بك في صالون GlowDesk! يمكنني مساعدتك في حجز خدمات السبا والشعر. أي خدمة تود حجزها؟" : (locale === 'fr' ? "Bonjour ! Bienvenue chez GlowDesk Spa. Quel soin souhaitez-vous réserver ?" : "Hello! Welcome to GlowDesk Beauty. Which service would you like to book?"),
       locale === 'ar' ? ["تنظيف بشرة", "مانيكير", "ليزر"] : (locale === 'fr' ? ["Soin du visage", "Manucure", "Épilation laser"] : ["Facial Treatment", "Manicure", "Laser Hair Removal"])
     );
   }, [locale]);
@@ -64,13 +66,26 @@ const WhatsAppDemo: React.FC = () => {
   };
 
   const handleOptionSelect = (option: string) => {
+    if (stage === 'confirmed') return; // Discussion finished
+
     setMessages(prev => [...prev, { role: 'user', text: option }]);
-    setTimeout(() => {
-      triggerBotResponse(
-        locale === 'ar' ? `رائع! لخدمة ${option} لدينا توفر غداً. هل الساعة 10:00 صباحاً أم 2:30 ظهراً تناسبك؟` : (locale === 'fr' ? `Parfait ! Pour le ${option}, nous avons des disponibilités demain. 10h00 ou 14h30 ?` : `Perfect! For the ${option}, we have availability tomorrow. Does 10:00 AM or 2:30 PM work better for you?`),
-        ["10:00 AM", "2:30 PM"]
-      );
-    }, 500);
+    
+    if (stage === 'service') {
+      setStage('time');
+      setTimeout(() => {
+        triggerBotResponse(
+          locale === 'ar' ? `رائع! لخدمة ${option} لدينا توفر غداً. هل الساعة 10:00 صباحاً أم 2:30 ظهراً تناسبك؟` : (locale === 'fr' ? `Parfait ! Pour votre ${option}, nous avons des disponibilités demain. 10h00 ou 14h30 ?` : `Perfect! For your ${option}, we have availability tomorrow. Does 10:00 AM or 2:30 PM work better for you?`),
+          ["10:00 AM", "2:30 PM"]
+        );
+      }, 500);
+    } else if (stage === 'time') {
+      setStage('confirmed');
+      setTimeout(() => {
+        triggerBotResponse(
+          locale === 'ar' ? `تم التأكيد! حجزنا لك الموعد في تمام ${option}. لقد أرسلنا رسالة تأكيد إلى هاتفك. نراك قريباً!` : (locale === 'fr' ? `C'est confirmé ! Votre rendez-vous est réservé pour ${option}. Nous vous avons envoyé un SMS de confirmation. À bientôt !` : `Confirmed! Your appointment is successfully booked for ${option}. We have sent a confirmation text to your phone. See you soon!`)
+        );
+      }, 500);
+    }
   };
 
   return (
@@ -97,7 +112,7 @@ const WhatsAppDemo: React.FC = () => {
                {m.options && (
                  <div className={`mt-3 flex flex-wrap gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
                    {m.options.map(opt => (
-                     <button key={opt} onClick={() => handleOptionSelect(opt)} className="px-3 py-1.5 bg-rose-50 text-rose-600 border border-rose-200 rounded-full font-semibold">{opt}</button>
+                     <button key={opt} onClick={() => handleOptionSelect(opt)} className="px-3 py-1.5 bg-rose-50 text-rose-600 border border-rose-200 rounded-full font-semibold hover:bg-rose-600 hover:text-white transition-colors">{opt}</button>
                    ))}
                  </div>
                )}
@@ -138,15 +153,15 @@ const VoiceDemo: React.FC = () => {
       intervalRef.current = window.setInterval(() => setTimer(prev => prev + 1), 1000);
       
       const lines = locale === 'ar' ? [
-        ["AI", "مرحباً بك في معهد لوميير للتجميل. يمكنني مساعدتك في حجز موعد. ما هي الخدمة التي تهتم بها؟"],
+        ["AI", "مرحباً بك في صالون التجميل الفاخر. يمكنني مساعدتك في حجز موعد لشعر أو سبا. ما هي الخدمة التي تهتم بها؟"],
         ["Caller", "أهلاً، أبحث عن تنظيف بشرة الأسبوع القادم."],
         ["AI", "لدينا موعد متاح يوم الثلاثاء الساعة 11:00 صباحاً. هل يناسبك؟"]
       ] : (locale === 'fr' ? [
-        ["AI", "Bienvenue à l'Institut Lumière. Je peux vous aider à prendre rendez-vous. Quel service vous intéresse ?"],
+        ["AI", "Bienvenue à votre institut de beauté GlowDesk. Je peux vous aider à réserver un soin. Quel service vous intéresse ?"],
         ["Caller", "Bonjour, je cherche un soin du visage pour la semaine prochaine."],
         ["AI", "Nous avons une disponibilité mardi à 11h00. Cela vous convient-il ?"]
       ] : [
-        ["AI", "Hello, welcome to Lumière Beauty Institute. I can help you book an appointment. Which service are you interested in?"],
+        ["AI", "Hello, welcome to GlowDesk Beauty Spa. I can help you book a luxury treatment. Which service are you interested in?"],
         ["Caller", "Hi, I'm looking for an anti-aging facial sometime next week."],
         ["AI", "We have our signature 'Eternal Glow' facial available on Tuesday at 11:00 AM. Would that work?"]
       ]);
@@ -154,7 +169,7 @@ const VoiceDemo: React.FC = () => {
       lines.forEach((l, i) => {
         setTimeout(() => setTranscript(prev => [...prev, `${l[0]}: ${l[1]}`]), (i + 1) * 2000);
       });
-    }, 1500);
+    }, 1000); 
   };
 
   const endCall = () => {
@@ -174,12 +189,12 @@ const VoiceDemo: React.FC = () => {
       <div className="max-w-md mx-auto w-full flex-1 flex flex-col justify-between">
         {status === 'idle' ? (
           <div className="text-center mt-20">
-            <div className="w-24 h-24 bg-rose-500/10 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-24 h-24 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <Phone size={40} className="animate-pulse" />
             </div>
             <h3 className="text-2xl font-bold mb-2">{t.demo.voiceTitle}</h3>
             <p className="text-slate-400 mb-8">{t.demo.voiceDesc}</p>
-            <button onClick={startCall} className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-bold shadow-lg">{t.demo.voiceCTA}</button>
+            <button onClick={startCall} className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-bold shadow-lg uppercase tracking-wider">{t.demo.voiceCTA}</button>
           </div>
         ) : (
           <>
@@ -241,11 +256,11 @@ const CalendarDemo: React.FC = () => {
       </div>
 
       {selectedSlot ? (
-        <div className="flex-1 flex flex-col items-center justify-center text-center">
+        <div className="flex-1 flex flex-col items-center justify-center text-center animate-in zoom-in duration-300">
            <div className="w-16 h-16 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mb-4"><Check size={32} /></div>
            <h4 className="text-xl font-bold text-slate-900">{t.demo.calSuccess}</h4>
            <p className="text-slate-500 mb-6">{t.demo.calSuccessSub.replace('{slot}', selectedSlot)}</p>
-           <button onClick={() => setSelectedSlot(null)} className="text-rose-600 font-bold">{t.demo.calAnother}</button>
+           <button onClick={() => setSelectedSlot(null)} className="text-rose-600 font-bold hover:underline">{t.demo.calAnother}</button>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -253,7 +268,11 @@ const CalendarDemo: React.FC = () => {
             <div 
               key={i} 
               className={`p-4 border rounded-xl flex items-center justify-between group transition-all ${slot.status === 'booked' ? 'bg-slate-50 opacity-60' : 'bg-white border-slate-200 hover:border-rose-300 cursor-pointer'} ${isRTL ? 'flex-row-reverse' : ''}`}
-              onClick={() => slot.status === 'free' && setSelectedSlot(slot.time)}
+              onClick={() => {
+                if (slot.status === 'free') {
+                  setSelectedSlot(slot.time);
+                }
+              }}
             >
               <p className="text-lg font-bold text-slate-800">{slot.time}</p>
               {slot.status === 'booked' ? (

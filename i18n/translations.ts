@@ -5,18 +5,18 @@ export const translations = {
   en: {
     nav: {
       benefits: "Benefits",
-      demo: "Demo",
+      demo: "Experience",
       pricing: "Pricing",
       howItWorks: "How it Works",
       about: "About",
-      cta: "Request a Demo",
+      cta: "Experience GlowDesk",
       login: "Login",
       dashboard: "Dashboard",
       logout: "Logout"
     },
     auth: {
       title: "Client Portal",
-      subtitle: "Secure access to your Orienta desk",
+      subtitle: "Secure access to your Orienta dashboard",
       userLabel: "Username or Email",
       passLabel: "Password",
       btn: "Sign In",
@@ -56,165 +56,166 @@ export const translations = {
       }
     },
     hero: {
-      badge: "Next-Gen AI for Service Businesses",
-      headline: "Never Miss a ",
-      headlineItalic: "Client",
-      headlineEnd: " Again",
-      subheadline: "An intelligent AI assistant by Orienta that answers calls, WhatsApp messages, and manages bookings automatically for beauty, wellness, and boutique clinics.",
-      primaryCTA: "Request a Demo",
-      secondaryCTA: "See How It Works",
+      badge: "AI Receptionist for Beauty & Spa",
+      headline: "The Elite Front Desk for ",
+      headlineItalic: "Salons",
+      headlineEnd: " & Spas",
+      subheadline: "GlowDesk is Orienta's specialized AI assistant designed exclusively for beauty salons and wellness spas. It manages your calls and WhatsApp 24/7, booking appointments while you focus on your clients.",
+      primaryCTA: "Start Free Trial",
+      secondaryCTA: "Watch It Work",
       check1: "No long-term commitment",
       check2: "GDPR compliant",
       check3: "Cancel anytime",
-      bookingLabel: "New Booking",
-      bookingService: "Service at 2:00 PM"
+      bookingLabel: "New Appointment",
+      bookingService: "Balayage at 2:00 PM"
     },
     problems: {
       badge: "The Challenge",
-      headline: "Managing your desk shouldn't mean ",
+      headline: "Managing your salon shouldn't mean ",
       headlineItalic: "missing",
-      headlineEnd: " growth.",
-      subheadline: "Manual scheduling is the bottleneck for service-based businesses. Whether it's a salon or a wellness clinic, you shouldn't have to choose between a client and the phone.",
+      headlineEnd: " clients.",
+      subheadline: "Manual scheduling is the bottleneck for luxury beauty businesses. You shouldn't have to choose between a treatment and the phone.",
       items: [
-        { title: "Missed Calls", desc: "You're focused on a session and the phone rings. Another lead lost to a competitor." },
-        { title: "After-Hours Loss", desc: "Most clients book when you're closed. GlowDesk works while you rest." },
-        { title: "Staff Distraction", desc: "Your professionals should provide services, not act as full-time receptionists." }
+        { title: "Missed Opportunities", desc: "You're focused on a facial and the phone rings. Another high-value client lost." },
+        { title: "After-Hours Scheduling", desc: "Most clients book in the evening. GlowDesk fills your morning while you sleep." },
+        { title: "Staff Burnout", desc: "Your professionals should be artists, not full-time receptionists." }
       ],
       testimonial: "\"GlowDesk changed our workflow. We no longer worry about the phone during peak hours.\"",
-      author: "Maria, Studio & Wellness Owner"
+      author: "Maria, Spa & Wellness Owner"
     },
     solutions: {
       badge: "The Solution",
-      headline: "Built for ",
-      headlineAccent: "Wellness & Aesthetics",
-      subheadline: "GlowDesk understands the nuances of professional services—from treatment durations to cancellation policies and client etiquette.",
+      headline: "Exclusively for ",
+      headlineAccent: "Beauty & Spa",
+      subheadline: "GlowDesk understands the specific needs of salons—from treatment durations to cancellation policies and luxury etiquette.",
       items: [
-        { title: "AI Voice Receptionist", desc: "Answers calls 24/7 with a warm, natural voice that represents your brand perfectly." },
-        { title: "WhatsApp Manager", desc: "Turns conversations into bookings directly within the client's favorite messaging app." },
-        { title: "Universal Sync", desc: "Seamlessly integrates with Google, Outlook, and most professional scheduling platforms." },
-        { title: "Smart Consultation", desc: "Answers service questions and triage leads based on your specific business rules." },
-        { title: "Proactive Reminders", desc: "Dramatically reduces no-shows with automated, intelligent follow-ups." },
-        { title: "Enterprise Security", desc: "Built on Orienta's secure infrastructure. We prioritize privacy and data compliance." }
+        { title: "AI Voice Receptionist", desc: "Answers calls 24/7 with a warm, natural voice that understands spa services." },
+        { title: "WhatsApp Booking", desc: "Turns chat into confirmed appointments directly in your calendar." },
+        { title: "Universal Sync", desc: "Seamlessly integrates with Google, Outlook, and salon management software." },
+        { title: "Treatment Consultation", desc: "Answers client questions about specific services and prep instructions." },
+        { title: "Smart Reminders", desc: "Reduces no-shows for expensive treatments with automated, gentle follow-ups." },
+        { title: "Orienta Infrastructure", desc: "Built on Orienta's secure AI platform for absolute data privacy." }
       ]
     },
     howItWorks: {
       headline: "How it Works",
-      subheadline: "Getting started with GlowDesk is seamless and requires zero technical skills.",
+      subheadline: "Getting started with GlowDesk is seamless for any beauty professional.",
       steps: [
-        { title: "Connect Your Calendar", desc: "Integrate with Google, Outlook, or your existing salon software in minutes." },
-        { title: "AI Handles Requests", desc: "When customers call or message, our AI takes over immediately, providing expert assistance." },
-        { title: "Relax & Serve", desc: "Watch your schedule fill up automatically while you focus on providing amazing treatments." }
+        { title: "Sync Your Calendar", desc: "Connect your current booking system in seconds." },
+        { title: "AI Takes the Front Desk", desc: "Our specialized beauty-trained AI answers calls and messages instantly." },
+        { title: "Focus on Your Art", desc: "Watch your schedule fill up while you provide amazing treatments." }
       ]
     },
     about: {
       title: "About Orienta",
       whoHeadline: "Who We Are",
-      whoText: "Orienta is a technology company focused on building AI-powered assistants that help service-based businesses work more efficiently, serve their clients better, and grow without adding operational complexity. We design intelligent systems that guide, assist, and automate customer interactions, while always keeping humans in control.",
+      whoText: "Orienta is a technology company focused on building specialized AI-powered assistants. We create niche-specific solutions that handle customer interactions so businesses can thrive.",
       missionHeadline: "Our Mission",
-      missionText: "Our mission is simple: help businesses never miss an opportunity because of limited time or availability. We believe that technology should remove friction, not create it. That’s why we build AI assistants that are easy to use, safe, and designed to integrate naturally into existing business workflows.",
+      missionText: "We help service providers never miss an opportunity. Orienta removes the friction of manual scheduling through intelligent automation.",
       whatWeDoHeadline: "What We Do",
-       whatWeDoSub: "Orienta develops AI assistants that can:",
+       whatWeDoSub: "Orienta develops sector-specific AI assistants:",
        whatWeDoItems: [
-        "Answer customer calls and messages 24/7",
-        "Handle repetitive conversations automatically",
-        "Guide customers to the right service",
-        "Book appointments seamlessly",
-        "Reduce operational overload for teams"
+        "GlowDesk: Exclusively for Beauty & Spas",
+        "FitDesk: Exclusively for Gyms & Fitness",
+        "Real-time 24/7 call and message handling",
+        "Seamless booking and CRM integration",
+        "Lead collection and triage"
       ],
-      whatWeDoEnd: "Our solutions are built to deliver immediate, measurable value, without requiring heavy technical setup or long-term commitments.",
+      whatWeDoEnd: "Our products provide immediate impact without technical complexity.",
       approachHeadline: "Our Approach",
       approachIntro: "At Orienta, we follow three core principles:",
       approachItems: [
-        { title: "1. Orientation, Not Replacement", desc: "Our AI assistants are designed to assist and guide, not replace human expertise. They handle routine interactions so teams can focus on what truly matters." },
-        { title: "2. Safety and Simplicity", desc: "We avoid unnecessary complexity and risk. Our systems are built with clear boundaries, transparent behavior, and respect for data privacy." },
-        { title: "3. Real Business Impact", desc: "Every feature we build is driven by one question: does this help our customers save time, reduce costs, or increase revenue?" }
+        { title: "1. Sector Specialization", desc: "We don't build generic AI. GlowDesk is trained for beauty; FitDesk for fitness." },
+        { title: "2. Privacy First", desc: "Enterprise-grade security for your client data." },
+        { title: "3. Measurable Growth", desc: "We track the revenue our AI captures for you." }
       ],
-      productsHeadline: "Our Products",
-      productsIntro: "Orienta develops industry-specific solutions tailored to real business needs.",
+      productsHeadline: "Our Specialized Assistants",
+      productsIntro: "Orienta develops solutions tailored to specific industry workflows.",
       glowDeskTitle: "GlowDesk",
       glowDeskText: "GlowDesk is our AI-powered receptionist for beauty and aesthetic businesses. It helps salons and institutes answer calls and messages automatically, book appointments 24/7, and improve customer experience. GlowDesk is designed specifically for beauty professionals, with workflows that match how salons actually operate.",
       fitDeskTitle: "FitDesk",
       fitDeskText: "FitDesk is our AI-powered assistant for gyms and fitness studios. It helps fitness centers handle class bookings, manage memberships, and answer routine inquiries 24/7. FitDesk is tailored to the specific needs of high-frequency fitness environments, ensuring no member request goes unanswered.",
       workWithHeadline: "Who We Work With",
       workWithItems: [
-        "Beauty and aesthetic businesses",
-        "Service-based small and medium enterprises",
-        "Partners looking to offer AI-powered customer interaction solutions"
+        "Luxury Salons & Spas",
+        "Aesthetic Clinics",
+        "Boutique Fitness Studios",
+        "Wellness Centers"
       ],
       visionHeadline: "Our Vision",
-      visionText: "We envision a future where every service business has access to a smart, reliable digital front desk, available at all times. Our long-term goal is to make Orienta the trusted platform for AI-assisted customer interaction across multiple industries, starting with beauty and aesthetics.",
+      visionText: "A world where professionals are free to focus on their craft while Orienta handles the logistics.",
       ctaHeadline: "Get in Touch",
-      ctaText: "Whether you’re a business owner, partner, or simply curious about our solutions, we’d love to hear from you. Discover how Orienta can help your business grow — starting with GlowDesk and FitDesk."
+      ctaText: "Discover how Orienta can help your business grow with GlowDesk or FitDesk."
     },
     demo: {
       headline: "Experience GlowDesk",
-      subheadline: "See how Orienta's AI interacts with your clients across multiple touchpoints.",
+      subheadline: "See how our AI interacts with your salon clients.",
       whatsapp: "WhatsApp",
       voice: "Voice",
       calendar: "Calendar",
-      waHeader: "GlowDesk Assistant",
-      waSub: "Powered by Orienta • Online",
+      waHeader: "GlowDesk AI",
+      waSub: "Beauty Assistant • Online",
       waInput: "Type a message...",
-      voiceTitle: "Voice AI Demo",
-      voiceDesc: "Simulate a live incoming call to your business desk.",
-      voiceCTA: "Start Call Simulation",
-      voiceInbound: "Incoming...",
+      voiceTitle: "AI Front Desk Call",
+      voiceDesc: "Call our specialized beauty assistant now.",
+      voiceCTA: "START CALL",
+      voiceInbound: "Connecting...",
       voiceMute: "Mute",
       voiceEnd: "Hang Up",
       voiceInfo: "Info",
-      calTitle: "Unified Dashboard",
-      calSub: "Real-time sync across platforms",
-      calSync: "Orienta Cloud Sync",
-      calSuccess: "Booking Confirmed!",
-      calSuccessSub: "Slot for {slot} has been successfully secured.",
-      calAnother: "Book another slot",
+      calTitle: "Salon Dashboard",
+      calSub: "Real-time calendar sync",
+      calSync: "GlowDesk Sync",
+      calSuccess: "Appointment Confirmed!",
+      calSuccessSub: "The {slot} slot has been reserved in your salon calendar.",
+      calAnother: "View other slots",
       calReserved: "Occupied",
-      calBookNow: "Reserve"
+      calBookNow: "Reserve Slot"
     },
     pricing: {
-      headline: "Plans for Every Scale",
-      subheadline: "Transparent pricing designed to grow with your business. Choose your GlowDesk tier.",
-      mostPopular: "Recommended",
+      headline: "Plans for Your Salon",
+      subheadline: "Simple pricing to maximize your chair occupancy.",
+      mostPopular: "Best Seller",
       perMo: "/mo",
       tiers: [
-        { name: "Lite", price: "49", desc: "For independent professionals", cta: "Start Lite" },
-        { name: "Professional", price: "99", desc: "Best for established clinics & studios", cta: "Start Pro" },
-        { name: "Enterprise", price: "149", desc: "Multi-location & custom industries", cta: "Contact Orienta" }
+        { name: "Lite", price: "49", desc: "For independent stylists", cta: "Start Free Trial" },
+        { name: "Professional", price: "99", desc: "Perfect for busy beauty salons", cta: "Start Free Trial" },
+        { name: "Enterprise", price: "149", desc: "Multiple locations & spa chains", cta: "Contact Sales" }
       ]
     },
     contact: {
-      headline: "Ready to Upgrade Your Desk?",
-      subheadline: "Schedule a demo with the Orienta team to see GlowDesk in action for your specific industry.",
-      points: ["14-day free trial", "Industry-specific setup", "Priority 1-on-1 support"],
-      trusted: "Trusted by over 500 service providers",
-      success: "Message Sent!",
-      successSub: "An Orienta specialist will contact you shortly.",
+      headline: "Talk to our AI Front Desk",
+      subheadline: "Experience exactly how GlowDesk will answer your salon's phone calls.",
+      points: ["14-day free trial", "Salon-specific setup", "Priority 1-on-1 support"],
+      trusted: "Trusted by 500+ Luxury Spas & Salons",
+      success: "Lead Captured!",
+      successSub: "Our team will follow up for your installation.",
       labels: {
-        biz: "Business Name",
+        biz: "Salon Name",
         name: "Contact Name",
         email: "Work Email",
         phone: "Mobile Phone",
-        type: "Industry Type"
+        type: "Business Type"
       },
-      types: ["Beauty & Aesthetics", "Fitness & Yoga", "Wellness & Spa", "Specialist Clinics", "Boutique Services"],
-      cta: "Get My Free Demo"
+      types: ["Beauty Salon", "Hair Studio", "Wellness Spa", "Aesthetic Clinic", "Nail Bar"],
+      cta: "START CALL"
     }
   },
   fr: {
     nav: {
       benefits: "Avantages",
-      demo: "Démo",
+      demo: "Expérience",
       pricing: "Tarifs",
       howItWorks: "Fonctionnement",
       about: "À Propos",
-      cta: "Demander une démo",
+      cta: "Essayer GlowDesk",
       login: "Connexion",
       dashboard: "Tableau de Bord",
       logout: "Déconnexion"
     },
     auth: {
       title: "Portail Client",
-      subtitle: "Accès sécurisé à votre bureau Orienta",
+      subtitle: "Accès sécurisé à votre tableau de bord Orienta",
       userLabel: "Utilisateur ou Email",
       passLabel: "Mot de passe",
       btn: "Se Connecter",
@@ -254,165 +255,166 @@ export const translations = {
       }
     },
     hero: {
-      badge: "IA de nouvelle génération pour les entreprises de services",
-      headline: "Ne manquez plus jamais un ",
-      headlineItalic: "Client",
-      headlineEnd: " ",
-      subheadline: "Un assistant intelligent par Orienta qui répond aux appels, aux messages WhatsApp et gère les réservations automatiquement.",
-      primaryCTA: "Demander une démo",
-      secondaryCTA: "Voir comment ça marche",
-      check1: "Sans engagement à long terme",
+      badge: "Réceptionniste IA pour Beauté & Spa",
+      headline: "L'accueil d'élite pour vos ",
+      headlineItalic: "Salons",
+      headlineEnd: " & Spas",
+      subheadline: "GlowDesk est l'assistant IA spécialisé d'Orienta conçu exclusivement pour les salons de beauté et spas. Il gère vos appels et WhatsApp 24/7.",
+      primaryCTA: "Essai Gratuit",
+      secondaryCTA: "Voir la démo",
+      check1: "Sans engagement",
       check2: "Conforme RGPD",
-      check3: "Annulez à tout moment",
-      bookingLabel: "Nouvelle réservation",
-      bookingService: "Service à 14h00"
+      check3: "Annulation facile",
+      bookingLabel: "Nouveau RDV",
+      bookingService: "Balayage à 14:00"
     },
     problems: {
       badge: "Le Défi",
-      headline: "Gérer votre bureau ne devrait pas signifier ",
-      headlineItalic: "manquer",
-      headlineEnd: " la croissance.",
-      subheadline: "La planification manuelle est le goulot d'étranglement pour les entreprises de services.",
+      headline: "Gérer votre salon ne devrait pas signifier ",
+      headlineItalic: "perdre",
+      headlineEnd: " des clients.",
+      subheadline: "La planification manuelle est le frein des instituts de luxe.",
       items: [
-        { title: "Appels manqués", desc: "Vous êtes concentré sur une séance et le téléphone sonne. Un prospect de perdu." },
-        { title: "Perte hors horaires", desc: "La plupart des clients réservent quand vous êtes fermé. GlowDesk travaille pendant que vous vous reposez." },
-        { title: "Distraction du personnel", desc: "Vos professionnels devraient fournir des services, pas agir comme réceptionnistes." }
+        { title: "Opportunités Manquées", desc: "Concentré sur un soin, vous manquez un appel important." },
+        { title: "Réservations de Nuit", desc: "La plupart des clients réservent le soir. GlowDesk remplit votre planning." },
+        { title: "Fatigue des Équipes", desc: "Vos experts sont des artistes, pas des standardistes." }
       ],
-      testimonial: "\"GlowDesk a changé notre flux de travail. Nous ne nous soucions plus du téléphone.\"",
-      author: "Maria, Propriétaire de studio"
+      testimonial: "\"GlowDesk a transformé notre accueil. Plus besoin de surveiller le téléphone.\"",
+      author: "Maria, Propriétaire de Spa"
     },
     solutions: {
       badge: "La Solution",
-      headline: "Conçu pour le ",
-      headlineAccent: "Bien-être et l'Esthétique",
-      subheadline: "GlowDesk comprend les nuances des services professionnels.",
+      headline: "Exclusivement pour ",
+      headlineAccent: "Beauté & Spa",
+      subheadline: "GlowDesk comprend les besoins spécifiques des instituts.",
       items: [
-        { title: "Réceptionniste IA Vocale", desc: "Répond aux appels 24/7 avec une voix naturelle." },
-        { title: "Gestionnaire WhatsApp", desc: "Transforme les conversations en réservations directement." },
-        { title: "Synchro Universelle", desc: "S'intègre parfaitement avec Google et Outlook." },
-        { title: "Consultation Intelligente", desc: "Répond aux questions sur les services." },
-        { title: "Rappels Proactifs", desc: "Réduit considérablement les absences." },
-        { title: "Sécurité Entreprise", desc: "Construit sur l'infrastructure sécurisée d'Orienta." }
+        { title: "Réceptionniste Vocale IA", desc: "Répond 24/7 avec une voix naturelle formée au spa." },
+        { title: "Réservation WhatsApp", desc: "Transforme les chats en rendez-vous confirmés." },
+        { title: "Synchro Universelle", desc: "S'intègre à vos logiciels de gestion de salon." },
+        { title: "Conseil en Soins", desc: "Répond aux questions sur vos services spécifiques." },
+        { title: "Rappels Intelligents", desc: "Réduit les absences grâce à des suivis automatiques." },
+        { title: "Infrastructure Orienta", desc: "Sécurité absolue pour les données de vos clients." }
       ]
     },
     howItWorks: {
       headline: "Comment ça marche",
-      subheadline: "Démarrer avec GlowDesk est simple et ne nécessite aucune compétence technique.",
+      subheadline: "Une mise en place simple pour tout professionnel de la beauté.",
       steps: [
-        { title: "Connectez votre calendrier", desc: "Intégrez Google, Outlook ou votre logiciel actuel en quelques minutes." },
-        { title: "L'IA gère les demandes", desc: "Quand les clients appellent ou envoient un message, notre IA prend le relais." },
-        { title: "Détendez-vous et servez", desc: "Regardez votre emploi du temps se remplir automatiquement." }
+        { title: "Synchronisez votre Calendrier", desc: "Connectez votre système actuel en quelques secondes." },
+        { title: "L'IA prend le Relais", desc: "Notre IA spécialisée répond instantanément." },
+        { title: "Focus sur vos Clients", desc: "Votre planning se remplit tout seul." }
       ]
     },
     about: {
       title: "À Propos d'Orienta",
       whoHeadline: "Qui Nous Sommes",
-      whoText: "Orienta est une société technologique axée sur la création d'assistants alimentés par l'IA.",
+      whoText: "Orienta crée des assistants IA spécialisés par secteur pour automatiser l'accueil client.",
       missionHeadline: "Notre Mission",
-      missionText: "Notre mission est simple : aider les entreprises à ne jamais manquer une opportunité.",
+      missionText: "Aider les prestataires de services à ne jamais manquer une opportunité.",
       whatWeDoHeadline: "Ce Que Nous Faisons",
-      whatWeDoSub: "Orienta développe des assistants IA qui peuvent :",
+      whatWeDoSub: "Orienta développe des assistants IA sectoriels :",
       whatWeDoItems: [
-        "Répondre aux appels et messages 24/7",
-        "Gérer les conversations répétitives",
-        "Guider les clients vers le bon service",
-        "Réserver des rendez-vous",
-        "Réduire la surcharge opérationnelle"
+        "GlowDesk : Dédié à la Beauté & Spas",
+        "FitDesk : Dédié au Fitness & Gyms",
+        "Gestion d'appels et messages 24/7",
+        "Intégration CRM et Calendrier",
+        "Collecte de leads qualifiés"
       ],
-      whatWeDoEnd: "Nos solutions sont conçues pour offrir une valeur immédiate.",
+      whatWeDoEnd: "Des solutions à impact immédiat.",
       approachHeadline: "Notre Approche",
-      approachIntro: "Chez Orienta, nous suivons trois principes fondamentaux :",
+      approachIntro: "Chez Orienta, nous suivons trois principes :",
       approachItems: [
-        { title: "1. Orientation, pas remplacement", desc: "Nos assistants IA sont conçus pour assister et guider." },
-        { title: "2. Sécurité et Simplicité", desc: "Nous évitons la complexité inutile." },
-        { title: "3. Impact réel sur le business", desc: "Chaque fonctionnalité est axée sur la valeur." }
+        { title: "1. Spécialisation Sectorielle", desc: "GlowDesk est formé pour la beauté, FitDesk pour le sport." },
+        { title: "2. Confidentialité", desc: "Protection maximale des données clients." },
+        { title: "3. Croissance Mesurable", desc: "Nous suivons le revenu généré par l'IA." }
       ],
-      productsHeadline: "Nos Produits",
-      productsIntro: "Orienta développe des solutions spécifiques à l'industrie.",
+      productsHeadline: "Nos Assistants Spécialisés",
+      productsIntro: "Des solutions adaptées aux flux de travail de chaque industrie.",
       glowDeskTitle: "GlowDesk",
       glowDeskText: "GlowDesk est notre réceptionniste IA pour la beauté.",
       fitDeskTitle: "FitDesk",
-      fitDeskText: "FitDesk est notre assistant IA pour les salles de sport.",
-      workWithHeadline: "Avec qui nous travaillons",
+      fitDeskText: "FitDesk est notre assistant IA pour le fitness.",
+      workWithHeadline: "Nos Partenaires",
       workWithItems: [
-        "Entreprises de beauté et d'esthétique",
-        "PME basées sur les services",
-        "Partenaires de solutions IA"
+        "Salons & Spas de Luxe",
+        "Cliniques Esthétiques",
+        "Studios de Fitness Boutique",
+        "Centres de Bien-être"
       ],
       visionHeadline: "Notre Vision",
-      visionText: "Nous envisageons un avenir où chaque entreprise de services a accès à une réception numérique intelligente.",
+      visionText: "Un monde où les professionnels se concentrent sur leur art.",
       ctaHeadline: "Contactez-nous",
-      ctaText: "Découvrez comment Orienta peut aider votre entreprise à se développer."
+      ctaText: "Découvrez comment Orienta peut aider votre entreprise."
     },
     demo: {
-      headline: "Découvrez GlowDesk",
-      subheadline: "Voyez comment l'IA d'Orienta interagit avec vos clients.",
+      headline: "Expérience GlowDesk",
+      subheadline: "Découvrez comment notre IA interagit avec vos clients.",
       whatsapp: "WhatsApp",
       voice: "Voix",
       calendar: "Calendrier",
-      waHeader: "Assistant GlowDesk",
-      waSub: "Propulsé par Orienta • En ligne",
-      waInput: "Tapez un message...",
-      voiceTitle: "Démo IA Vocale",
-      voiceDesc: "Simulez un appel entrant vers votre bureau.",
-      voiceCTA: "Lancer la simulation",
-      voiceInbound: "Appel entrant...",
+      waHeader: "GlowDesk IA",
+      waSub: "Assistant Beauté • En ligne",
+      waInput: "Écrivez un message...",
+      voiceTitle: "Appel Accueil IA",
+      voiceDesc: "Appelez notre assistant spécialisé beauté.",
+      voiceCTA: "LANCER L'APPEL",
+      voiceInbound: "Connexion...",
       voiceMute: "Muet",
       voiceEnd: "Raccrocher",
       voiceInfo: "Info",
-      calTitle: "Tableau de Bord Unifié",
-      calSub: "Synchro en temps réel",
-      calSync: "Orienta Cloud Sync",
-      calSuccess: "Réservation Confirmée !",
-      calSuccessSub: "Le créneau de {slot} a été réservé avec succès.",
-      calAnother: "Réserver un autre créneau",
+      calTitle: "Tableau de Bord Salon",
+      calSub: "Synchro calendrier temps réel",
+      calSync: "GlowDesk Sync",
+      calSuccess: "Rendez-vous Confirmé !",
+      calSuccessSub: "Le créneau de {slot} a été réservé dans votre calendrier.",
+      calAnother: "Voir d'autres créneaux",
       calReserved: "Occupé",
-      calBookNow: "Réserver"
+      calBookNow: "Réserver le créneau"
     },
     pricing: {
-      headline: "Des plans pour chaque échelle",
-      subheadline: "Tarification transparente conçue pour évoluer avec vous.",
-      mostPopular: "Recommandé",
+      headline: "Des Plans pour votre Salon",
+      subheadline: "Maximisez l'occupation de vos fauteuils.",
+      mostPopular: "Meilleure Vente",
       perMo: "/mois",
       tiers: [
-        { name: "Lite", price: "49", desc: "Pour les indépendants", cta: "Démarrer Lite" },
-        { name: "Professionnel", price: "99", desc: "Idéal pour les cliniques et studios", cta: "Démarrer Pro" },
-        { name: "Entreprise", price: "149", desc: "Multi-sites et sur mesure", cta: "Contacter Orienta" }
+        { name: "Lite", price: "49", desc: "Pour les indépendants", cta: "Essai Gratuit" },
+        { name: "Professionnel", price: "99", desc: "Idéal pour les salons occupés", cta: "Essai Gratuit" },
+        { name: "Entreprise", price: "149", desc: "Multi-sites et spas", cta: "Contact Ventes" }
       ]
     },
     contact: {
-      headline: "Prêt à moderniser votre accueil ?",
-      subheadline: "Planifiez une démo avec l'équipe Orienta.",
-      points: ["Essai gratuit de 14 jours", "Configuration spécifique", "Support prioritaire"],
-      trusted: "Approuvé par plus de 500 prestataires",
-      success: "Message envoyé !",
-      successSub: "Un spécialiste Orienta vous contactera sous peu.",
+      headline: "Appelez notre Accueil IA",
+      subheadline: "Découvrez exactement comment GlowDesk répondra au téléphone de votre salon.",
+      points: ["14 jours d'essai gratuit", "Configuration spécialisée salon", "Support prioritaire"],
+      trusted: "Approuvé par 500+ Spas & Salons de Luxe",
+      success: "Lead Capturé !",
+      successSub: "Notre équipe vous contactera pour l'installation.",
       labels: {
-        biz: "Nom de l'entreprise",
-        name: "Nom du contact",
-        email: "Email professionnel",
-        phone: "Téléphone mobile",
-        type: "Type d'industrie"
+        biz: "Nom du Salon",
+        name: "Nom du Contact",
+        email: "Email Professionnel",
+        phone: "Mobile",
+        type: "Type d'entreprise"
       },
-      types: ["Beauté & Esthétique", "Fitness & Yoga", "Bien-être & Spa", "Cliniques spécialisées", "Services Boutique"],
-      cta: "Obtenir ma démo gratuite"
+      types: ["Salon de Beauté", "Studio Coiffure", "Spa & Bien-être", "Clinique Esthétique", "Bar à Ongles"],
+      cta: "LANCER L'APPEL"
     }
   },
   ar: {
     nav: {
       benefits: "المميزات",
-      demo: "تجربة حية",
+      demo: "التجربة",
       pricing: "الأسعار",
       howItWorks: "كيف يعمل",
       about: "من نحن",
-      cta: "طلب تجربة",
+      cta: "جرب GlowDesk",
       login: "تسجيل الدخول",
       dashboard: "لوحة التحكم",
       logout: "خروج"
     },
     auth: {
       title: "بوابة العملاء",
-      subtitle: "دخول آمن لمكتب Orienta الخاص بك",
+      subtitle: "دخول آمن للوحة تحكم Orienta الخاصة بك",
       userLabel: "اسم المستخدم",
       passLabel: "كلمة المرور",
       btn: "دخول",
@@ -448,152 +450,153 @@ export const translations = {
         title: "الخطة والفواتير",
         currentPlan: "الخطة الحالية",
         manage: "إدارة الاشتراك",
-        history: "سجل الفواتير"
+        history: "التحصيل"
       }
     },
     hero: {
-      badge: "ذكاء اصطناعي من الجيل القادم لخدمات الأعمال",
-      headline: "لا تفوت ",
-      headlineItalic: "عميلاً",
-      headlineEnd: " أبداً مرة أخرى",
-      subheadline: "مساعد ذكي من Orienta يرد على المكالمات ورسائل الواتساب ويدير الحجوزات تلقائياً.",
-      primaryCTA: "طلب تجربة",
+      badge: "موظف استقبال ذكي للتجميل والسبا",
+      headline: "الاستقبال النخبة لصالونات ",
+      headlineItalic: "التجميل",
+      headlineEnd: " والسبا",
+      subheadline: "GlowDesk هو مساعد Orienta المتخصص المصمم خصيصاً لصالونات التجميل والسبا الفاخرة. يدير مكالماتك وواتساب 24/7.",
+      primaryCTA: "ابدأ تجربة مجانية",
       secondaryCTA: "شاهد كيف يعمل",
-      check1: "بدون التزام طويل الأمد",
-      check2: "متوافق مع قوانين حماية البيانات",
+      check1: "بدون التزام طويل",
+      check2: "متوافق مع قوانين البيانات",
       check3: "إلغاء في أي وقت",
-      bookingLabel: "حجز جديد",
-      bookingService: "خدمة في الساعة 2:00 مساءً"
+      bookingLabel: "موعد جديد",
+      bookingService: "تنظيف بشرة الساعة 2:00"
     },
     problems: {
       badge: "التحدي",
-      headline: "إدارة مكتبك لا يجب أن تعني ",
-      headlineItalic: "فقدان",
-      headlineEnd: " النمو.",
-      subheadline: "الجدولة اليدوية هي العائق أمام الشركات الخدمية.",
+      headline: "إدارة صالونك لا يجب أن تعني ",
+      headlineItalic: "خسارة",
+      headlineEnd: " العملاء.",
+      subheadline: "الجدولة اليدوية هي العائق أمام أعمال التجميل الفاخرة.",
       items: [
-        { title: "مكالمات فائتة", desc: "أنت مشغول في جلسة والهاتف يرن. عميل آخر يذهب للمنافس." },
-        { title: "خسارة خارج الأوقات", desc: "معظم العملاء يحجزون عندما تكون مغلقاً. GlowDesk يعمل بينما ترتاح." },
-        { title: "تشتت الموظفين", desc: "يجب على محترفيك تقديم الخدمات، لا العمل كموظفي استقبال." }
+        { title: "فرص ضائعة", desc: "أنت مشغول في خدمة والهاتف يرن. ضاع عميل آخر." },
+        { title: "حجوزات بعد الوقت", desc: "معظم العملاء يحجزون مساءً. GlowDesk يملأ جدولك." },
+        { title: "إجهاد الموظفين", desc: "يجب أن يكون خبراؤك فنانين، لا موظفي استقبال." }
       ],
-      testimonial: "\"GlowDesk غير سير عملنا. لم نعد نقلق بشأن الهاتف خلال ساعات الذروة.\"",
-      author: "ماريا، مالكة استوديو"
+      testimonial: "\"GlowDesk غير سير عملنا. لم نعد نقلق بشأن الهاتف.\"",
+      author: "ماريا، مالكة سبا"
     },
     solutions: {
       badge: "الحل",
-      headline: "بني لقطاع ",
-      headlineAccent: "الجمال والعناية",
-      subheadline: "GlowDesk يفهم تفاصيل الخدمات المهنية.",
+      headline: "حصرياً لقطاع ",
+      headlineAccent: "التجميل والسبا",
+      subheadline: "GlowDesk يفهم احتياجات الصالونات والعيادات.",
       items: [
-        { title: "موظف استقبال صوتي", desc: "يرد على المكالمات 24/7 بصوت طبيعي." },
-        { title: "مدير واتساب", desc: "يحول المحادثات إلى حجوزات مباشرة." },
-        { title: "مزامنة شاملة", desc: "يتكامل مع جوجل وأوتلوك." },
-        { title: "استشارة ذكية", desc: "يجيب على أسئلة الخدمات." },
-        { title: "تذكيرات استباقية", desc: "يقلل بشكل كبير من حالات عدم الحضور." },
-        { title: "أمن الشركات", desc: "بني على بنية Orienta الآمنة." }
+        { title: "موظف استقبال صوتي", desc: "يرد 24/7 بصوت طبيعي متخصص في خدمات السبا." },
+        { title: "حجز واتساب", desc: "يحول الدردشة إلى مواعيد مؤكدة في تقويمك." },
+        { title: "مزامنة شاملة", desc: "يتكامل مع جوجل وبرامج إدارة الصالونات." },
+        { title: "استشارة الخدمات", desc: "يجيب على أسئلة العملاء حول الخدمات وتعليمات التحضير." },
+        { title: "تذكيرات ذكية", desc: "يقلل حالات عدم الحضور للمواعيد المكلفة." },
+        { title: "بنية Orienta", desc: "بني على منصة Orienta الآمنة لحماية بياناتك." }
       ]
     },
     howItWorks: {
       headline: "كيف يعمل",
-      subheadline: "البدء مع GlowDesk سلس ولا يتطلب مهارات تقنية.",
+      subheadline: "بدء العمل مع GlowDesk سلس لأي محترف تجميل.",
       steps: [
-        { title: "ربط التقويم", desc: "تكامل مع جوجل أو أوتلوك في دقائق." },
-        { title: "الذكاء الاصطناعي يعالج الطلبات", desc: "عندما يتصل العملاء، يتولى مساعدنا الرد فوراً." },
-        { title: "استرخِ واخدم", desc: "شاهد جدولك يمتلئ تلقائياً." }
+        { title: "اربط تقويمك", desc: "اربط نظام حجزك الحالي في ثوانٍ." },
+        { title: "الذكاء الاصطناعي يتولى الاستقبال", desc: "مساعدنا المتخصص يرد فوراً." },
+        { title: "ركز على فنك", desc: "شاهد جدولك يمتلئ بينما تخدم عملاءك." }
       ]
     },
     about: {
       title: "عن Orienta",
       whoHeadline: "من نحن",
-      whoText: "Orienta هي شركة تقنية تركز على بناء مساعدين مدعومين بالذكاء الاصطناعي.",
+      whoText: "Orienta هي شركة تقنية تبني مساعدين متخصصين بالذكاء الاصطناعي.",
       missionHeadline: "مهمتنا",
-      missionText: "مهمتنا بسيطة: مساعدة الشركات على عدم تفويت أي فرصة.",
+      missionText: "مساعدة مقدمي الخدمات على عدم تفويت أي فرصة.",
       whatWeDoHeadline: "ماذا نفعل",
-      whatWeDoSub: "تطور Orienta مساعدي ذكاء اصطناعي يمكنهم:",
+      whatWeDoSub: "تطور Orienta مساعدين متخصصين حسب القطاع:",
       whatWeDoItems: [
-        "الرد على المكالمات والرسائل 24/7",
-        "التعامل مع المحادثات المتكررة",
-        "توجيه العملاء للخدمة الصحيحة",
-        "حجز المواعيد بسلاسة",
-        "تقليل الحمل التشغيلي"
+        "GlowDesk: حصرياً لصالونات التجميل والسبا",
+        "FitDesk: حصرياً للصالات الرياضية واللياقة",
+        "إدارة مكالمات ورسائل 24/7",
+        "تكامل مع التقويم و CRM",
+        "جمع وتصنيف العملاء الجدد"
       ],
-      whatWeDoEnd: "حلولنا مصممة لتقديم قيمة فورية.",
+      whatWeDoEnd: "حلولنا تقدم تأثيراً فورياً.",
       approachHeadline: "نهجنا",
-      approachIntro: "في Orienta، نتبع ثلاثة مبادئ أساسية:",
+      approachIntro: "في Orienta، نتبع ثلاثة مبادئ:",
       approachItems: [
-        { title: "1. التوجيه لا الاستبدال", desc: "مساعدونا مصممون للمساعدة والتوجيه." },
-        { title: "2. الأمان والبساطة", desc: "نتجنب التعقيد غير الضروري." },
-        { title: "3. تأثير حقيقي على الأعمال", desc: "كل ميزة نبنيها تهدف لزيادة القيمة." }
+        { title: "1. التخصص في القطاع", desc: "GlowDesk مدرب للتجميل، FitDesk للياقة." },
+        { title: "2. الخصوصية أولاً", desc: "أمن بمستوى الشركات لبيانات عملائك." },
+        { title: "3. نمو ملموس", desc: "نتتبع الإيرادات التي يحققها مساعدنا لك." }
       ],
-      productsHeadline: "منتجاتنا",
-      productsIntro: "تطور Orienta حلولاً متخصصة لكل قطاع.",
+      productsHeadline: "مساعدونا المتخصصون",
+      productsIntro: "حلول مصممة لتناسب سير العمل في كل صناعة.",
       glowDeskTitle: "GlowDesk",
       glowDeskText: "GlowDesk هو موظف الاستقبال الذكي لقطاع التجميل.",
       fitDeskTitle: "FitDesk",
-      fitDeskText: "FitDesk هو مساعد الذكاء الاصطناعي للصالات الرياضية.",
+      fitDeskText: "FitDesk هو مساعد الذكاء الاصطناعي للياقة البدنية.",
       workWithHeadline: "من نعمل معهم",
       workWithItems: [
-        "شركات التجميل والجمال",
-        "الشركات الصغيرة والمتوسطة الخدمية",
-        "الشركاء الذين يبحثون عن حلول الذكاء الاصطناعي"
+        "الصالونات والسبا الفاخرة",
+        "العيادات التجميلية",
+        "استوديوهات اللياقة",
+        "مراكز الرفاهية"
       ],
       visionHeadline: "رؤيتنا",
-      visionText: "نتصور مستقبلاً حيث تمتلك كل شركة خدمية مكتب استقبال رقمي ذكي.",
+      visionText: "عالم يركز فيه المحترفون على إبداعهم بينما تتولى Orienta الخدمات اللوجستية.",
       ctaHeadline: "تواصل معنا",
-      ctaText: "اكتشف كيف يمكن لـ Orienta مساعدة عملك على النمو."
+      ctaText: "اكتشف كيف يمكن لـ Orienta مساعدة عملك."
     },
     demo: {
-      headline: "جرب GlowDesk",
-      subheadline: "شاهد كيف يتفاعل الذكاء الاصطناعي مع عملائك.",
+      headline: "تجربة GlowDesk",
+      subheadline: "شاهد كيف يتفاعل الذكاء الاصطناعي مع عملاء صالونك.",
       whatsapp: "واتساب",
       voice: "صوت",
       calendar: "التقويم",
-      waHeader: "مساعد GlowDesk",
-      waSub: "مدعوم من Orienta • متصل",
+      waHeader: "GlowDesk AI",
+      waSub: "مساعد تجميل • متصل",
       waInput: "اكتب رسالة...",
-      voiceTitle: "تجربة الصوت الذكي",
-      voiceDesc: "محاكاة مكالمة واردة مباشرة إلى مكتبك.",
-      voiceCTA: "بدء المحاكاة",
-      voiceInbound: "مكالمة واردة...",
+      voiceTitle: "مكالمة الاستقبال الذكي",
+      voiceDesc: "اتصل بمساعد التجميل المتخصص الآن.",
+      voiceCTA: "بدء الاتصال",
+      voiceInbound: "جاري الاتصال...",
       voiceMute: "كتم",
       voiceEnd: "إنهاء",
       voiceInfo: "معلومات",
-      calTitle: "لوحة تحكم موحدة",
-      calSub: "مزامنة فورية عبر المنصات",
-      calSync: "سحابة Orienta",
-      calSuccess: "تم تأكيد الحجز!",
-      calSuccessSub: "تم حجز موعد {slot} بنجاح.",
-      calAnother: "حجز موعد آخر",
+      calTitle: "لوحة تحكم الصالون",
+      calSub: "مزامنة التقويم فورياً",
+      calSync: "مزامنة GlowDesk",
+      calSuccess: "تم تأكيد الموعد!",
+      calSuccessSub: "تم حجز موعد {slot} في تقويم صالونك.",
+      calAnother: "عرض مواعيد أخرى",
       calReserved: "محجوز",
-      calBookNow: "احجز الآن"
+      calBookNow: "احجز الموعد"
     },
     pricing: {
-      headline: "خطط لكل حجم",
-      subheadline: "أسعار شفافة مصممة لتنمو مع عملك.",
-      mostPopular: "الأكثر طلباً",
+      headline: "خطط لصالونك",
+      subheadline: "أسعار بسيطة لزيادة إشغال مقاعدك.",
+      mostPopular: "الأكثر مبيعاً",
       perMo: "/شهرياً",
       tiers: [
-        { name: "Lite", price: "49", desc: "للمحترفين المستقلين", cta: "ابدأ مع Lite" },
-        { name: "Professional", price: "99", desc: "للعيادات والاستوديوهات", cta: "ابدأ مع Pro" },
-        { name: "Enterprise", price: "149", desc: "للفروع المتعددة", cta: "تواصل مع Orienta" }
+        { name: "Lite", price: "49", desc: "للمحترفين المستقلين", cta: "ابدأ تجربة مجانية" },
+        { name: "Professional", price: "99", desc: "مثالي للصالونات المزدحمة", cta: "ابدأ تجربة مجانية" },
+        { name: "Enterprise", price: "149", desc: "للفروع المتعددة وسلاسل السبا", cta: "اتصل بالمبيعات" }
       ]
     },
     contact: {
-      headline: "مستعد لتطوير مكتبك؟",
-      subheadline: "احجز موعداً للتجربة مع فريق Orienta.",
-      points: ["تجربة مجانية 14 يوماً", "إعداد مخصص لكل قطاع", "دعم فني متميز"],
-      trusted: "موثوق من أكثر من 500 مزود خدمة",
-      success: "تم إرسال الرسالة!",
-      successSub: "سيتواصل معك متخصص من Orienta قريباً.",
+      headline: "تحدث مع استقبالنا الذكي",
+      subheadline: "جرب بنفسك كيف سيرد GlowDesk على مكالمات صالونك.",
+      points: ["14 يوم تجربة مجانية", "إعداد مخصص للصالونات", "دعم فني متميز"],
+      trusted: "موثوق من 500+ سبا وصالون فاخر",
+      success: "تم التقاط العميل!",
+      successSub: "سيتواصل معك فريقنا للتركيب.",
       labels: {
-        biz: "اسم العمل",
-        name: "اسم التواصل",
+        biz: "اسم الصالون",
+        name: "اسم الشخص",
         email: "البريد الإلكتروني",
         phone: "الجوال",
-        type: "نوع القطاع"
+        type: "نوع العمل"
       },
-      types: ["التجميل والعناية", "اللياقة واليوغا", "السبا والرفاهية", "العيادات المتخصصة", "خدمات بوتيك"],
-      cta: "احصل على تجربتي المجانية"
+      types: ["صالون تجميل", "استوديو شعر", "سبا ورفاهية", "عيادة تجميل", "صالون أظافر"],
+      cta: "بدء الاتصال"
     }
   }
 };
